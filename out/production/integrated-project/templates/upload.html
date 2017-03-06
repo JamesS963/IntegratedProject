@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enter Document Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Form</h1>
+<form action="/" th:action="@{download}" th:object="${document}" method="post" enctype="multipart/form-data">
+    <p>docId: <input type="text" th:field="*{docId}" /></p>
+    <p>revisionNo: <input type="text" th:field="*{revisionNo}" /></p>
+    <p>title: <input type="text" th:field="*{title}" /></p>
+    <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+// Login page
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<form method="POST" name="login" th:action="@{/login}">
+
+    <p>Username: <input name="username" id="username" /></p>
+    <p>Password: <input name="password" id="password" /></p>
+    <p>Remember Me?: <input type="checkbox" name="remember-me" id="remember-me" /></p>
+    <button type="submit">Login</button>
+
+</form>
+
+</body>
+</html>

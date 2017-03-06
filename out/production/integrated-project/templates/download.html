@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View all documents</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<style type="text/css" media="screen">
+    table{
+    border:1px solid #FF0000;
+    }
+    table tr{
+    border:1px solid #FF0000;
+    }
+</style>
+
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <h1>Result</h1>
+    <p th:text="'docId: ' + ${document.docId}" />
+    <p th:text="'revisionNo: ' + ${document.revisionNo}" />
+    <p th:text="'title: ' + ${document.title}" />
+    <a href="/upload">Submit another Document</a>
+
+    <div>
+        <ul>
+            <table>
+            <tr th:each="doc : ${documents}">
+            <td th:text="${doc.docId}"> : ID</td>
+            <td th:text="${doc.title}"> : Title</td>
+            <td th:text="${doc.revisionNo}"> : Revision No</td>
+            </tr>
+            </table>
+
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
