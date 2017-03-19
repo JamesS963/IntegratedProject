@@ -80,6 +80,7 @@
     }
     table tr{
     border:1px solid #FF0000;
+    display: block;
     }
 </style>
 
@@ -94,13 +95,14 @@
 <a href="/upload">Submit another Document</a>
 
 <div>
+
     <ul>
         <table>
             <tr th:each="doc : ${documents}">
-                <td th:text="${doc.docId}"> : ID</td>
-                <td th:text="${doc.title}"> : Title</td>
-                <td th:text="${doc.revisionNo}"> : Revision No</td>
-                <td th:text="${doc.filepath}">:FilePath</td>
+                <td th:text="${doc.docId}"> : ID <br/> </td>
+                <td th:text="${doc.title}"> : Title <br/> </td>
+                <td th:text="${doc.revisionNo}"> : Revision No <br/> </td>
+                <td th:text="${doc.filepath}">:FilePath <br/> </td>
             </tr>
         </table>
 
