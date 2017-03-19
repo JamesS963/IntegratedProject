@@ -1,17 +1,56 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Enter Document Details</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Upload</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<h1>Form</h1>
-<form action="/" th:action="@{download}" th:object="${document}" method="post" enctype="multipart/form-data">
-    <p>revisionNo: <input type="text" th:field="*{revisionNo}" /></p>
-    <p>title: <input type="text" th:field="*{title}" /></p>
-    <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
+
+<h3>Upload</h3>
+
+<div class = "upload">
+
+    <form action="/" th:action="@{download}" th:object="${document}" method="post" enctype="multipart/form-data">
+        <label class="control-label" >revisionNo:</label>
+        <input class = "file" type="text" th:field="*{revisionNo}" />
+        <label class="control-label" >title:</label>
+        <input class = "file" type="text" th:field="*{title}" />
+        <label class="control-label" >File to upload:</label>
+        <input id="input-1" type="file" name="file" class="file"/>
+        <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+    </form>
+</div>
+
+<script src="./upload.js"></script>
 </body>
 </html>

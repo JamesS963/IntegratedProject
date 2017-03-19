@@ -1,10 +1,78 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View all documents</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Download</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
+
+<div class ="download-head">
+    <h1>Download</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group" id="adv-search">
+                <input type="text" class="form-control" placeholder="Search for Documents" />
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <div class="dropdown dropdown-lg">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                <form class="form-horizontal" role="form">
+
+                                    <div class="form-group">
+                                        <label for="contain">Document Title</label>
+                                        <input class="form-control" type="text" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contain">Document ID</label>
+                                        <input class="form-control" type="text" />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 <style type="text/css" media="screen">
     table{
@@ -15,32 +83,32 @@
     }
 </style>
 
-    <div th:if="${message}">
-        <h2 th:text="${message}"/>
-    </div>
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
 
-    <h1>Result</h1>
-    <p th:text="'docId: ' + ${document.docId}" />
-    <p th:text="'revisionNo: ' + ${document.revisionNo}" />
-    <p th:text="'title: ' + ${document.title}" />
-    <a href="/upload">Submit another Document</a>
+<h1>Result</h1>
+<p th:text="'docId: ' + ${document.docId}" />
+<p th:text="'revisionNo: ' + ${document.revisionNo}" />
+<p th:text="'title: ' + ${document.title}" />
+<a href="/upload">Submit another Document</a>
 
-    <div>
-        <ul>
-            <table>
+<div>
+    <ul>
+        <table>
             <tr th:each="doc : ${documents}">
-            <td th:text="${doc.docId}"> : ID</td>
-            <td th:text="${doc.title}"> : Title</td>
-            <td th:text="${doc.revisionNo}"> : Revision No</td>
-            <td th:text="${doc.filepath}">:FilePath</td>
+                <td th:text="${doc.docId}"> : ID</td>
+                <td th:text="${doc.title}"> : Title</td>
+                <td th:text="${doc.revisionNo}"> : Revision No</td>
+                <td th:text="${doc.filepath}">:FilePath</td>
             </tr>
-            </table>
+        </table>
 
-            <li th:each="file : ${files}">
-                <a th:href="${file}" th:text="${file}" />
-            </li>
-        </ul>
-    </div>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
 
 </body>
 </html>
