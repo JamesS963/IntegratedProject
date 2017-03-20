@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <title>Upload</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styleSheet.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -20,37 +18,70 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li class="active"><a href="indexLoggedIn.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
             <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+            <li><a href="viewresults.html"><span class="glyphicon glyphicon-circle-arrow-right"></span>View Documents</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
         </ul>
     </div>
 </nav>
 
 <header>
-    <div class = "logo">
-        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
-    </div>
+<div class = "logo">
+    <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+</div>
 </header>
 
-<h3>Upload</h3>
+<div class="container"> <br />
+    <div class="row">
 
-<div class = "upload">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Upload files</strong> <small> </small></div>
+                <div class="panel-body">
+                    <div class="input-group image-preview">
+                        <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+                        <!-- don't give a name === doesn't send on POST/GET -->
+                        <span class="input-group-btn">
+						<!-- image-preview-clear button -->
+						<button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                            <!-- image-preview-input -->
+						<div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+							<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                            <!-- rename it -->
+						</div>
+						<button type="button" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+						</span> </div>
+                    <!-- /input-group image-preview [TO HERE]-->
 
-    <form action="/" th:action="@{download}" th:object="${document}" method="post" enctype="multipart/form-data">
-        <label class="control-label" >revisionNo:</label>
-        <input class = "file" type="text" th:field="*{revisionNo}" />
-        <label class="control-label" >title:</label>
-        <input class = "file" type="text" th:field="*{title}" />
-        <label class="control-label" >File to upload:</label>
-        <input id="input-1" type="file" name="file" class="file"/>
-        <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-    </form>
+                    <br />
+
+                    <!-- Drop Zone -->
+                    <div class="upload-drop-zone" id="drop-zone"> Or drag and drop files here </div>
+                    <br />
+                    <!-- Progress Bar -->
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
 </div>
 
-<script src="./upload.js"></script>
+
+
+<!-- /container -->
+
+
+
 </body>
 </html>

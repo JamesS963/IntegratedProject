@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <title>Download</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styleSheet.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -18,12 +18,13 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li class="active"><a href="indexLoggedIn.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
             <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+            <li><a href="viewresults.html"><span class="glyphicon glyphicon-circle-arrow-right"></span>View Documents</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -35,82 +36,37 @@
 </header>
 
 <div class ="download-head">
-    <h1>Download</h1>
+<h1>Download</h1>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for Documents" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" id="adv-search">
+                    <input type="text" class="form-control" placeholder="Search for Documents" />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <div class="dropdown dropdown-lg">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <form class="form-horizontal" role="form">
 
-                                    <div class="form-group">
-                                        <label for="contain">Document Title</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Document ID</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
+                                        <div class="form-group">
+                                            <label for="contain">Document Title</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Document ID</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </form>
+                                </div>
                             </div>
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-<style type="text/css" media="screen">
-    table{
-    border:1px solid #FF0000;
-    }
-    table tr{
-    border:1px solid #FF0000;
-    display: block;
-    }
-</style>
-
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
-
-<h1>Result</h1>
-<p th:text="'docId: ' + ${document.docId}" />
-<p th:text="'revisionNo: ' + ${document.revisionNo}" />
-<p th:text="'title: ' + ${document.title}" />
-<a href="/upload">Submit another Document</a>
-
-<div>
-
-    <ul>
-        <table>
-            <tr th:each="doc : ${documents}">
-                <td th:text="${doc.docId}"> : ID <br/> </td>
-                <td th:text="${doc.title}"> : Title <br/> </td>
-                <td th:text="${doc.revisionNo}"> : Revision No <br/> </td>
-                <td th:text="${doc.filepath}">:FilePath <br/> </td>
-            </tr>
-        </table>
-
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
-        </li>
-    </ul>
-</div>
-
-</body>
-</html>
