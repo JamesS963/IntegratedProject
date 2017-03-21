@@ -1,0 +1,197 @@
+<!-- Admin Dashboard page -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- Main Header Section -->
+<head>
+    <meta charset="UTF-8">
+    <!-- Main title -->
+    <title>Admin Dashboard Page</title>
+    <!-- Css link-->
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Header Closer -->
+</head>
+
+<!-- Local Style Sheet -->
+<Style>
+
+    /* Heading Control */
+    /*Header One; setting */
+    h1 {
+        position: relative;
+        /* controls margin between parent objects*/
+        margin:0;
+        width: 100%;
+        height: 45px;
+        /* Border Colour control */
+        background:#262626;
+        z-index: -1;
+    }
+    /*Header One; wrapper*/
+    h1 span {
+        /* Text Colour */
+        color: white;
+        font: bold 20px/30px Helvetica, Sans-Serif;
+        letter-spacing: 1px;
+        padding: 10px;
+    }
+
+    /*Header Two: setting */
+    h2 {
+        position: relative;
+        /* controls margin between parent objects*/
+        margin:0;
+        width: 100%;
+        height: 40px;
+        background:#262626;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    /*Header Two: wrapper*/
+    h2 span {
+        color: black;
+        font: bold 24px/30px Helvetica, Sans-Serif;
+        letter-spacing: 1px;
+        padding: 10px;
+    }
+
+    /* Main Container */
+    .container {
+        position: relative;
+        width: 33.3%;
+        float: left;
+    }
+
+    /* Image control */
+    .image {
+        display: block;
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Overlap control */
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: #262626;
+    }
+
+    /* Mouse hover control */
+    .container:hover .overlay {
+        opacity: 1;
+    }
+
+    /* Section Two control */
+    .text {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    /* Temp display for user ATM, till i can find something better */
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+        position: relative;
+    }
+
+</Style>
+
+<!-- Main Body code Start -->
+<body>
+
+<!-- Navigation Bar Section -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Navigation Bar end -->
+
+<!-- Logo Code -->
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
+<!-- Logo Code end -->
+
+<h1><span>Admin Dashboard</span></h1>
+
+<!-- Create_User HTMl access button -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Create_User.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control -->
+        <a href="createUser.html">
+        <div class="text">Create a User</div>
+        </a>
+    </div>
+</div>
+
+<!-- View_User HTML access button  -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Edit_User_2.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control -->
+        <a href ="ViewUser.html">
+        <div class="text">View and Edit Users</div>
+        </a>
+    </div>
+</div>
+
+<!-- Home_Page HTML access button  -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Home.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control, Diverts to download for the moment -->
+        <a href="download.html">
+        <div class="text">Return to home page</div>
+        </a>
+    </div>
+</div>
+
+<!-- Secondary Header to separate sections -->
+<!-- Somethings wrong with the margin here, "<h2><span>" -->
+<h2><span>Current System Users</span></h2>
+
+<!-- Unsure what is really gonna be used here for displaying user information. -->
+<form>
+    <textarea>Unsure what is really gonna be used here for displaying user information, just gonna leave this for the moment...</textarea>
+</form>
+
+</body>
+</html>
