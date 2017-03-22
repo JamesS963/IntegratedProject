@@ -38,7 +38,7 @@ public class UserController {
         } catch (Exception ex) {
             return "Error creating the document: " + ex.toString();
         }
-        return "redirect:/view/" + savedDocument.getDocId();
+        return "redirect:/view/" + savedDocument.getId();
     }
 
     @RequestMapping(value = "/view/{docId}", method = RequestMethod.GET)
@@ -47,6 +47,12 @@ public class UserController {
         System.out.println(document);
         ModelAndView mv = new ModelAndView("testView");
         mv.addObject("document", document);
+        return mv;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/testRest")
+    public ModelAndView testRest() {
+        ModelAndView mv = new ModelAndView("testRest");
         return mv;
     }
 

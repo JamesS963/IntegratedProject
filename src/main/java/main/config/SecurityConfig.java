@@ -27,7 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private DataSource dataSource;
 
-
     @Bean
     public UserDetailsService userDetailsServiceBean() {
         return new UserDetailsServiceImpl();
@@ -45,13 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/upload").permitAll()
                 .antMatchers("/download").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/admin/user/create").permitAll()
+                .antMatchers("/testRest").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN").anyRequest().authenticated()
         .and().formLogin()
                 .loginPage("/login").permitAll().and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll();
-
-
-
     }
 
     // Using BCrypt to hash the password so that it's not viewed in plain text

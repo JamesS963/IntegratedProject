@@ -16,5 +16,7 @@ public interface UserDao extends CrudRepository<User, Long> {
      * @return the specified User if found or null if not found.
      */
     public User findByUsername(String username);
-
+    public User findById(long id);
 }
+
+

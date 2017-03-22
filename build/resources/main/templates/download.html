@@ -30,7 +30,7 @@
 
 <header>
     <div class = "logo">
-        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "./ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
     </div>
 </header>
 
@@ -89,7 +89,7 @@
 </div>
 
 <h1>Result</h1>
-<p th:text="'docId: ' + ${document.docId}" />
+<p th:text="'id: ' + ${document.id}" />
 <p th:text="'revisionNo: ' + ${document.revisionNo}" />
 <p th:text="'title: ' + ${document.title}" />
 <a href="/upload">Submit another Document</a>
@@ -99,7 +99,7 @@
     <ul>
         <table>
             <tr th:each="doc : ${documents}">
-                <td th:text="${doc.docId}"> : ID <br/> </td>
+                <td th:text="${doc.id}"> : ID <br/> </td>
                 <td th:text="${doc.title}"> : Title <br/> </td>
                 <td th:text="${doc.revisionNo}"> : Revision No <br/> </td>
                 <td th:text="${doc.filepath}">:FilePath <br/> </td>

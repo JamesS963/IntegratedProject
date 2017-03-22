@@ -8,5 +8,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface DocumentDao extends CrudRepository<Document, Long> {
 
+    public Document findById(long id);
+    public Document findByTitle(String title);
+
 
 }

@@ -23,13 +23,12 @@ import java.util.stream.Collectors;
  */
 
 @Controller
-public class FileApi {
+public class fileApi {
 
     private final StorageService storageService;
-    private TempStorage temp = new TempStorage();
 
     @Autowired
-    public FileApi(StorageService storageService) {
+    public fileApi(StorageService storageService) {
         this.storageService = storageService;
     }
 
@@ -97,7 +96,7 @@ public class FileApi {
         model.addAttribute("files", storageService
                 .loadAll()
                 .map(path -> MvcUriComponentsBuilder
-                                    .fromMethodName(FileApi.class, "serveFile", path.getFileName().toString())
+                                    .fromMethodName(fileApi.class, "serveFile", path.getFileName().toString())
                                     .build().toString())
                 .collect(Collectors.toList()));
         model.addAttribute("documents", documentDao.findAll());

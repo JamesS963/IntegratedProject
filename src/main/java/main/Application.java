@@ -1,6 +1,7 @@
 package main;
 
 import main.dao.DocumentDao;
+import main.dao.UserDao;
 import main.storage.StorageProperties;
 import main.storage.StorageService;
 import org.springframework.boot.CommandLineRunner;
@@ -18,11 +19,14 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(StorageService storageService, DocumentDao documentDao) {
+    CommandLineRunner init(StorageService storageService, DocumentDao documentDao, UserDao userDao) {
         return (args) -> {
-            //documentDao.deleteAll();
-            //storageService.deleteAll();
-            storageService.init();
+            /* Uncomment these to wipe database and/or filesystem*/
+            //documentDao.deleteAll(); // document database
+            //storageService.deleteAll(); // files in filesystem
+            //userDao.deleteAll(); // user database
+
+            storageService.init(); // don't comment out
         };
     }
 
