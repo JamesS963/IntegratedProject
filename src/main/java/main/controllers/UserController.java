@@ -56,4 +56,10 @@ public class UserController {
         return mv;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/testLogged")
+    public ModelAndView testLogged() {
+        ModelAndView mv = new ModelAndView("testLogged");
+        return mv;
+    }
+
 }

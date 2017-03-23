@@ -4,11 +4,18 @@ import main.dao.DocumentDao;
 import main.dao.UserDao;
 import main.models.Document;
 import main.models.User;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Dean on 21/03/2017.
@@ -94,6 +101,14 @@ public class JsonController {
             return null;
          }
         }
-}
 
+    @RequestMapping (value ="/getLoggedUser")
+    User getLoggedUser(HttpServletRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        User user = userDao.findByUsername(userDetails.getUsername());
+        return user;
+    }
+
+}
 

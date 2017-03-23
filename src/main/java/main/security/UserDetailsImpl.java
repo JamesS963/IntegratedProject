@@ -32,6 +32,10 @@ public class UserDetailsImpl implements UserDetails {
         return AuthorityUtils.createAuthorityList(role.toString());
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public String getPassword() {
         return password;
