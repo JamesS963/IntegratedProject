@@ -170,50 +170,55 @@ h3{
 .glyphicon-circle-arrow-right{
     padding-right: 5px;
 }
-/* layout.css Style */
-.upload-drop-zone {
-    height: 200px;
-    border-width: 2px;
-    margin-bottom: 20px;
+#input-2{
+    border-radius: 10px;
+    background-color:lightgrey;
+    width:80%;
+    /*background-color:#337ab7;*/
+}
+.btn-labeled{
+    display:inline-block;
+    margin-top: 15px;
+    padding: 10px;
+}
+.btn-default{
+    display:inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color:lightcoral;
+}
+.panel-heading{
+    font-size: medium;
 }
 
-/* skin.css Style*/
-.upload-drop-zone {
-    color: #ccc;
-    border-style: dashed;
-    border-color: #ccc;
-    line-height: 200px;
-    text-align: center
+.centered-form{
+	margin-top: 10px;
 }
-.upload-drop-zone.drop {
-    color: #222;
-    border-color: #222;
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+	height:50%;
+	width:150%;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
 }
 
 
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
 
-.image-preview-input {
-    position: relative;
-    overflow: hidden;
-    margin: 0px;
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;
-}
-.image-preview-input input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-.image-preview-input-title {
-    margin-left:2px;
-}
+
 
 /*ul {
     list-style-type: none;
