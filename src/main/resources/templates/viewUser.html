@@ -1,9 +1,79 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>viewUser</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styleSheet.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
 <body>
-<p th:text="${user.username}">username</p>
-<p th:text="${user.password}">password</p>
-<p th:text="${user.firstname}">firstname</p>
-<p th:text="${user.surname}">surname</p>
-<p th:text="${user.role}">role</p>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="indexLoggedIn.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+            <li><a href="viewresults.html"><span class="glyphicon glyphicon-circle-arrow-right"></span>View Documents</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User's Name</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">  <img src="user-avatar.png" alt=""class="img-circle img-responsive"> </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>First Name: </td>
+                                    <td>insert</td>
+                                </tr>
+                                <tr>
+                                    <td>Surname: </td>
+                                    <td>insert</td>
+                                </tr>
+                                <tr>
+                                    <td>Username: </td>
+                                    <td>insert</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a title="Archive User" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-inbox"></i></a>
+                    <span class="pull-right">
+                            <a href="editUser.html" title="Edit User" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ><i class="glyphicon glyphicon-edit" alt = "Edit User"></i></a>
+                            <a title="Remove User" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"alt = "Remove User"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
