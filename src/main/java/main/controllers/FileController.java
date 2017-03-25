@@ -1,13 +1,18 @@
-package main;
+package main.controllers;
 
 import main.dao.DocumentDao;
+import main.dao.UserDao;
 import main.models.Document;
+import main.models.User;
 import main.storage.StorageFileNotFoundException;
 import main.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,21 +24,20 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
- * Created by Dean on 16/02/2017.
+ * Created by Dean on 24/03/2017.
  */
-
 @Controller
-public class fileApi {
-
+public class FileController {
     private final StorageService storageService;
+    private final DocumentDao documentDao;
+    private final UserDao userDao;
 
     @Autowired
-    public fileApi(StorageService storageService) {
+    public FileController(StorageService storageService, DocumentDao documentDao, UserDao userDao) {
         this.storageService = storageService;
+        this.documentDao = documentDao;
+        this.userDao = userDao;
     }
-
-    @Autowired
-    private DocumentDao documentDao;
 
     /***
      * Attaches new Document object to form on upload page
@@ -57,14 +61,29 @@ public class fileApi {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes,
                                    @ModelAttribute Document document) {
-        /* Save file to file system */
-        storageService.store(file);
+
+        /* Load logged user */
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        User user = userDao.findByUsername(userDetails.getUsername());
+
         /* Finalise document details and save to database */
-        document.setFilepath(storageService.getRootLocation().toString() + "/" + file.getOriginalFilename());
+        long id = documentDao.save(document).getId(); // gets generated id
+        document = documentDao.findById(id);
+        document.setAuthor(user.getUsername());
+        document.setFilepath(storageService.getRootLocation().toString() +
+                "/" +user.getUsername()+ "/" + id);
+
+        /* Set branch for file */
+        String branch = "/"  +user.getUsername()+ "/" + document.getId() + "/" +document.getRevisionNo()+ "/";
+
+        userDao.save(user);
+        storageService.store(file, branch);
         documentDao.save(document);
+
+
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-
 
         return "redirect:/download";
     }
@@ -74,6 +93,23 @@ public class fileApi {
      * @param filename
      * @return ResponseEntity
      */
+    @GetMapping("/files/{username}/{docId}/{revisionNo}/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile (@PathVariable("username") String username,
+                                               @PathVariable("docId") String docId,
+                                               @PathVariable("revisionNo") String revisionNo,
+                                               @PathVariable("filename") String filename)
+    {
+        System.out.println("Serve file firing"); // for debug
+        String filepath = username + "/" + docId + "/" + revisionNo + "/" + filename;
+        Resource file = storageService.loadAsResource(filepath);
+        System.out.println(file.getFilename());
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
+                .body(file);
+    }
+
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -92,23 +128,24 @@ public class fileApi {
      */
     @GetMapping("/download")
     public String listUploadedFiles(Model model, @ModelAttribute Document document) throws IOException {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        User user = userDao.findByUsername(userDetails.getUsername());
+        String username = user.getUsername();
+        String docId = Long.toString(document.getId());
+        String revisionNo = Long.toString(document.getRevisionNo());
         System.out.println("Attempting to show files...");
         model.addAttribute("files", storageService
                 .loadAll()
                 .map(path -> MvcUriComponentsBuilder
-                                    .fromMethodName(fileApi.class, "serveFile", path.getFileName().toString())
-                                    .build().toString())
+                        .fromMethodName(FileController.class, "serveFile", path.getFileName().toString())
+                        .build().toString())
                 .collect(Collectors.toList()));
         model.addAttribute("documents", documentDao.findAll());
         model.addAttribute("document", document);
 
         return "download";
     }
-
-
-
-
-
 
     /***
      * Handles FileNotFound exceptions
@@ -120,7 +157,6 @@ public class fileApi {
         return ResponseEntity.notFound().build();
     }
 
-
-
-
 }
+
+

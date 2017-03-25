@@ -1,8 +1,12 @@
 package main.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
+import java.util.List;
 
 /**
  * Created by Lewis on 26/02/2017.
@@ -23,6 +27,7 @@ public class User implements Serializable {
     @NotNull
     private String username;
 
+    @JsonIgnore
     @NotNull
     private String password;
 
@@ -30,9 +35,10 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
     // believe thats it yeah, the reason why Document[] etc isnt needed is because we use the DAO for accessing that information
 
-    public User() { }
+    public User() {}
 
     public Long getId() {
         return id;
@@ -68,7 +74,7 @@ public class User implements Serializable {
 
     public String getPassword() {
         return password;
-    } // lol public getPassword
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -81,4 +87,5 @@ public class User implements Serializable {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }
