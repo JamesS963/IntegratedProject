@@ -27,6 +27,7 @@ public class Document {
     private String filepath = "/user/document";
     private boolean active = false;
     private Date creationDate = new Date();
+    private String author;
 
     public Document() { }
 
@@ -79,6 +80,13 @@ public class Document {
         this.creationDate = creationDate;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     @Override
     public String toString() {
@@ -86,4 +94,6 @@ public class Document {
                 " | filepath: " + this.filepath + " | isActive: " + this.active + " | creationDate: " +
                 this.creationDate;
     }
+
+
 }

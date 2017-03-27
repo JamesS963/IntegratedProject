@@ -103,7 +103,7 @@ public class JsonController {
         }
 
     @RequestMapping (value ="/getLoggedUser")
-    User getLoggedUser(HttpServletRequest request) {
+    User getLoggedUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         User user = userDao.findByUsername(userDetails.getUsername());
