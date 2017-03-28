@@ -1,0 +1,188 @@
+<!-- Admin Dashboard page -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- Main Header Section -->
+<head>
+    <meta charset="UTF-8">
+    <!-- Main title -->
+    <title>Admin Dashboard Page</title>
+
+    <!-- Css links -->
+    <!-- Ross' stuff -->
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Link to Ryans custom CSS for the admin page -->
+    <link href="Dashboard CSS/Admin_CSS_Custom.css" rel="stylesheet" type="text/css"/>
+    <!-- Import UserTable CSS -->
+    <link href="Dashboard CSS/UserTableCss.css" rel="stylesheet" type="text/css"/>
+
+
+    <!-- Header Closer -->
+</head>
+
+<!-- Main Body code Start -->
+<body>
+
+<!-- Navigation Bar Section -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Navigation Bar end -->
+
+<!-- Logo Code -->
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
+<!-- Logo Code end -->
+
+<h3><span>Admin Dashboard</span></h3>
+
+<!-- Create_User HTMl access button -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Images/AddUser.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control -->
+        <a href="createUser.html">
+        <div class="text">Create a User</div>
+        </a>
+    </div>
+</div>
+
+<!-- View_User HTML access button  -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Images/EditUser.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control -->
+        <a href ="ViewUser.html">
+        <div class="text">View and Edit Users</div>
+        </a>
+    </div>
+</div>
+
+<!-- Home_Page HTML access button  -->
+<div class="container">
+    <!-- Image path control -->
+    <img src="Images/AdminHome.png" alt="Avatar" class="image">
+    <div class="overlay">
+        <!-- path control, Diverts to download for the moment -->
+        <a href="download.html">
+        <div class="text">Return to home page</div>
+        </a>
+    </div>
+</div>
+
+<!-- Full Dynamic Table function, with search function -->
+<!-- Main User Table -->
+<input type="text" id="UserInput" onkeyup="myFunction()" placeholder="Search for Usernames...">
+
+<!-- Search section Script -->
+<script>
+    //Script to control search bar
+    //My Jscript sucks, amend accordingly
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("UserInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("UserTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            //Amend "[2]" to the number of the column to search correctly
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<!-- Main Table Class -->
+<table id="UserTable">
+    <!-- Open Table section -->
+    <tr class="header">
+        <!-- Main column headings, with width control -->
+        <!-- Full width control from here, css is a pain. -->
+        <!-- User First name -->
+        <th style="width:20%;">Firstname</th>
+        <!-- User Surname -->
+        <th style="width:20%;">Surname</th>
+        <!-- User Username, yo dawg... -->
+        <th style="width:20%;">Username</th>
+        <!-- User Password -->
+        <th style="width:25%;">Password</th>
+        <!-- User Role -->
+        <th style="width:15%;">Role</th>
+    </tr>
+
+    <!-- Exemplar format, BOLD text is for me because I am an idiot -->
+    <tr>
+        <!-- FIRST: ONE: 1; Username -->
+        <td>Lewis</td>
+        <!-- SECOND: TWO: 2; Surname -->
+        <td>Duncan</td>
+        <!-- THIRD: THREE: 3; Username -->
+        <td>Administrator</td>
+        <!-- FOURTH: FOUR: 4; Password -->
+        <td>ExamplePassword</td>
+        <!-- FIFTH: FIVE: 5; System Role -->
+        <td>Admin</td>
+    </tr>
+
+    <tr>
+        <!-- FIRST: ONE: 1; Username -->
+        <td>Ryan</td>
+        <!-- SECOND: TWO: 2; Surname -->
+        <td>Cobb</td>
+        <!-- THIRD: THREE: 3; Username -->
+        <td>COBBRYA</td>
+        <!-- FOURTH: FOUR: 4; Password -->
+        <td>Pass</td>
+        <!-- FIFTH: FIVE: 5; System Role -->
+        <td>System</td>
+    </tr>
+
+    <tr>
+        <!-- FIRST: ONE: 1; Username -->
+        <td>Zeus</td>
+        <!-- SECOND: TWO: 2; Surname -->
+        <td>ASJAS</td>
+        <!-- THIRD: THREE: 3; Username -->
+        <td>ASAS</td>
+        <!-- FOURTH: FOUR: 4; Password -->
+        <td>ASASS</td>
+        <!-- FIFTH: FIVE: 5; System Role -->
+        <td>ASAS</td>
+    </tr>
+
+    <!-- Exemplar end -->
+
+    <!-- Table Close -->
+</table>
+
+</body>
+</html>

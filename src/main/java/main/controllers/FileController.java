@@ -134,7 +134,6 @@ public class FileController {
         String username = user.getUsername();
         String docId = Long.toString(document.getId());
         String revisionNo = Long.toString(document.getRevisionNo());
-        System.out.println("Attempting to show files...");
         model.addAttribute("files", storageService
                 .loadAll()
                 .map(path -> MvcUriComponentsBuilder

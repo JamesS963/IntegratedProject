@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class ="userdash">
+    <aside>
+        <div class ="content create">
+            <a href="upload.html">
+                <h3><u>Create/upload new document</u></h3>
+                <p> Click here to create/ upload a new document to the system.</p>
+                <img src ="upload.jpg" width="256" height="256"/>
+                </a>
+        </div>
+    </aside>
+
+    <aside>
+        <div class ="content viewdocs">
+            <a href="documentView.html"></a>
+                <h3><u>Your Documents</u></h3>
+
+            <p th:text="'docId: ' + ${document.docId}" />
+            <p th:text="'revisionNo: ' + ${document.revisionNo}" />
+            <p th:text="'title: ' + ${document.title}" />
+
+            <div>
+
+                <ul>
+                    <table>
+                        <tr th:each="doc : ${documents}">
+                            <td th:text="${doc.docId}"> : ID <br/> </td>
+                            <td th:text="${doc.title}"> : Title <br/> </td>
+                            <td th:text="${doc.revisionNo}"> : Revision No <br/> </td>
+                            <td th:text="${doc.filepath}">:FilePath <br/> </td>
+                        </tr>
+                    </table>
+
+                    <li th:each="file : ${files}">
+                        <a th:href="${file}" th:text="${file}" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </aside>
+    <aside>
+        <div class ="content shareviewdoc">
+                <h3><u>Shared Documents  </u></h3>
+                <p th:text="'docId: ' + ${document.docId}" />
+                <p th:text="'revisionNo: ' + ${document.revisionNo}" />
+                <p th:text="'title: ' + ${document.title}" />
+
+                <div>
+
+                    <ul>
+                        <table>
+                            <tr th:each="doc : ${documents}">
+                                <td th:text="${doc.docId}"> : ID <br/> </td>
+                                <td th:text="${doc.title}"> : Title <br/> </td>
+                                <td th:text="${doc.revisionNo}"> : Revision No <br/> </td>
+                                <td th:text="${doc.filepath}">:FilePath <br/> </td>
+                            </tr>
+                        </table>
+
+                        <li th:each="file : ${files}">
+                            <a th:href="${file}" th:text="${file}" />
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        </div>
+    </aside>
+
+    <aside>
+        <div class ="content viewuser">
+                <h3><u> View your user information</u></h3>
+
+        </div>
+    </aside>
+
+    <style>
+        section.userdash{ margin-top: 20px; margin-bottom: 30px; padding: 0; }
+        section.userdash aside{ width: 33%; float: left;  text-align: center;}
+
+        section.userdash .content { margin: 15px; background: no-repeat center top; background-size: 75px 75px; padding-top: 85px; }
+
+        section.userdash aside h3 a { color: #000; text-decoration: none; }
+        section.userdash aside h3 a:hover { text-decoration: underline; }
+
+    </style>
+
+</section>
+
+
+</body>
+</html>

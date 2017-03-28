@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <title>Upload</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link th:href="@{/resources/stylesheets/styleSheet.css}" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styleSheet.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -20,38 +18,45 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li class="active"><a href="indexLoggedIn.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
             <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
         </ul>
     </div>
 </nav>
 
 <header>
-    <div class = "logo">
-        <a href="/" class="ideagen-logo" title="Ideagen.com">
-            <img th:src = "@{/resources/images/ideagen-logo-full-colour.svg}" alt="Ideagen PLC" /></a>
-    </div>
+<div class = "logo">
+    <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+</div>
 </header>
 
-<h3>Upload</h3>
 
-<div class = "upload">
+<!--<form method="post" enctype="multipart/form-data">-->
+    <div class="container"> <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Upload files</strong> <small> </small></div>
+                    <div class="panel-body">
+                        <label class="control-label">Select File</label>
+                        <input id="input-2" type="file" class="file"><button type="button" class="btn btn-default file-preview-clear"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+                        <!-- file-preview-input -->
+                        <button type="button" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                        </span> </div>
+                        </div>
 
-    <form action="/" th:action="@{download}" th:object="${document}" method="post" enctype="multipart/form-data">
-        <label class="control-label" >revisionNo:</label>
-        <input class = "file" type="text" th:field="*{revisionNo}" />
-        <label class="control-label" >title:</label>
-        <input class = "file" type="text" th:field="*{title}" />
-        <label class="control-label" >File to upload:</label>
-        <input id="input-1" type="file" name="file" class="file"/>
-        <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-    </form>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script src="./upload.js"></script>
+<!--</form>-->
+
+
 </body>
 </html>
