@@ -17,7 +17,7 @@ header{
     margin-top:-20px;
     height:80px;
 
-
+    
 }
 body{
     background-color:lightgrey;
@@ -167,6 +167,59 @@ h3{
 .checkbox{
     position:relative;left:20px;
 }
+.glyphicon-circle-arrow-right{
+    padding-right: 5px;
+}
+#input-2{
+    border-radius: 10px;
+    background-color:lightgrey;
+    width:80%;
+    /*background-color:#337ab7;*/
+}
+.btn-labeled{
+    display:inline-block;
+    margin-top: 15px;
+    padding: 10px;
+}
+.btn-default{
+    display:inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color:lightcoral;
+}
+.panel-heading{
+    font-size: medium;
+}
+
+.centered-form{
+	margin-top: 10px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+	height:50%;
+	width:150%;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+
+
+
 /*ul {
     list-style-type: none;
     margin: 0;

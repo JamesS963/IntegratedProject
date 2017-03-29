@@ -51,8 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         // This is where permissions are set for certain roles
 
         http.authorizeRequests()
-                .antMatchers("/")
+                .antMatchers("/**")
                 .permitAll()
+                /*
                 .antMatchers("/upload")
                 .access("hasRole('ROLE_ AUTHOR')")
                 .antMatchers("/download")
@@ -61,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .permitAll()
                 .antMatchers("/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
+                */
                 .and()
                 //Configures form login
                 .formLogin()
@@ -76,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/403");
+
 
     }
 

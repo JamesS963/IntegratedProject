@@ -22,8 +22,8 @@ public class Application {
     CommandLineRunner init(StorageService storageService, DocumentDao documentDao, UserDao userDao) {
         return (args) -> {
             /* Uncomment these to wipe database and/or filesystem*/
-            documentDao.deleteAll(); // document database
-            storageService.deleteAll(); // files in filesystem
+            //documentDao.deleteAll(); // document database
+            //storageService.deleteAll(); // files in filesystem
             //userDao.deleteAll(); // user database
 
             storageService.init(); // don't comment out
