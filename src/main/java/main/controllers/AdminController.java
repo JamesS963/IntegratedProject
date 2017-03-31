@@ -38,7 +38,6 @@ public class AdminController {
             System.out.println(user);
             createdUser = userDetailsService.registerUser(user);
         } catch (Exception e) {
-            System.out.println("fucked it: " + user);
             return "error";
         }
         return "redirect:/admin/user/" + createdUser.getId();

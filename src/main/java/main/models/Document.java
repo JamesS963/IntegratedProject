@@ -29,6 +29,8 @@ public class Document {
     private Date creationDate = new Date();
     private String author;
 
+    private String type = "document"; // for identifying at clientside
+
     public Document() { }
 
     // Public methods
@@ -95,5 +97,9 @@ public class Document {
                 this.creationDate;
     }
 
+
+    public String getType() {
+        return type;
+    }
 
 }
