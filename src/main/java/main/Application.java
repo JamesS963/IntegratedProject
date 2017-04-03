@@ -1,7 +1,9 @@
 package main;
 
-import main.dao.DocumentDao;
-import main.dao.UserDao;
+
+import main.dao.*;
+import main.models.*;
+import main.controllers.*;
 import main.storage.StorageProperties;
 import main.storage.StorageService;
 import org.springframework.boot.CommandLineRunner;

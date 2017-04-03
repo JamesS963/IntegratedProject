@@ -1,5 +1,6 @@
 package main.config;
 
+import main.controllers.CustomSuccessController;
 import main.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    CustomSuccessController customSuccessController;
+
     @Bean
     public UserDetailsService userDetailsServiceBean() {
         return new UserDetailsServiceImpl();
@@ -47,38 +51,42 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 
         // This makes sure anyone can access the index page and login page, and making sure the formLogin
-        // is setup and permits all, and delibertately all can logout, pretty basic but we can add to it as needed
-        // This is where permissions are set for certain roles
+        // is setup and permits all, and deliberately all can logout, pretty basic but we can add to it as needed
+        // This is where permissions/restrictions are set for certain roles
 
         http.authorizeRequests()
-                .antMatchers("/**")
+
+                .antMatchers("/")
                 .permitAll()
-                /*
                 .antMatchers("/upload")
                 .access("hasRole('ROLE_ AUTHOR')")
                 .antMatchers("/download")
+                .access("hasRole('ROLE_ AUTHOR')")
+                .antMatchers("/userDashboard")
                 .access("hasRole('ROLE_ AUTHOR')")
                 .antMatchers("/login")
                 .permitAll()
                 .antMatchers("/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
-                */
+                .antMatchers("/adminDashboard")
+                .access("hasRole('ROLE_ADMIN')")
                 .and()
+
                 //Configures form login
                 .formLogin()
-                .loginPage("/login")
+
+                .loginPage("/login").successHandler(customSuccessController)
                 .permitAll()
                 .and()
                 //Configures the logout function
                 .logout()
-                .deleteCookies("")
+                .deleteCookies("JSESSIONID")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .permitAll()
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/403");
-
 
     }
 

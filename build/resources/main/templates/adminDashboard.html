@@ -10,18 +10,58 @@
     <meta content="" />
     <!--  Main title -->
     <title>
-      Admin Dashboard Page
+      Admin Dashboard
     </title>
     <!--  Css links -->
     <!--  Ross' stuff -->
-    <link href="css/styleSheet.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/styleSheet.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!--  Main CSS -->
     <style type="text/css" xml:space="preserve">
         /* Admin Dashboard Custom CSS Page */
         /* Ryan Graham Cobb */
         /* Application to the Admin dashboard */
 
+      .navbar-inv {
+        background-color: #222;
+        border-color: #080808;
+    }
+
+      @media (min-width: 768px)
+        navbar.less:37
+        .navbar {
+        border-radius: 4px;
+      }
+
+     .navbar {
+       position: relative;
+        min-height: 50px;
+        margin-bottom: 20px;
+      border: 1px solid transparent;
+      }
+
+      article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+        display: block;
+      }
+
+    * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+.logo{
+    width:250px;
+    height:100px;
+    padding-top:15px;
+    padding-left:20px;
+}
 
         /* Heading Control */
         /*Header One; setting */
@@ -72,9 +112,12 @@
         /* Image control */
         .image {
             display: block;
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             align-items: center;
+            transition: all .5s ease;
+            opacity: 1;
+            -webkit-transition: all 0.3s;
         }
 
         /* Overlap control */
@@ -86,20 +129,27 @@
             right: 0;
             height: 100%;
             width: 100%;
-            opacity: 0;
-            transition: .5s ease;
-            background-color: #262626;
+            transition: all .5s ease;
+            opacity: 1;
+            -webkit-transition: all 0.3s;
+
         }
 
         /* Mouse hover control */
         .container:hover .overlay {
-            opacity: 1;
-            box-shadow: inset 0 0 0 25px #53a7ea;
+            opacity: 0.5;
+            transform: scale(1.2, 1.2);
+
+        }
+
+        .container:hover .image {
+        opacity: 1;
+            transform: scale(1.2, 1.2);
         }
 
         /* Section Two control */
         .text {
-            color: white;
+            color: black;
             font-size: 20px;
             position: absolute;
             top: 50%;
@@ -114,7 +164,7 @@
         /*Search box function */
         #UserInput {
             /* Search Icon image */
-            background-image: url('Search.png');
+            background-image: url('/images/Search.png');
             /* Icon position */
             background-position: 10px 12px;
             /* troubleshoot, don't delete. */
@@ -162,33 +212,29 @@
   <!--  Main Body code Start -->
   <body>
     <!--  Navigation Bar Section -->
+    <nav class="navbar navbar-inv">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand"></a>
       </div>
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a>
+          <a href="/adminDashboard.html"><span class="glyphicon glyphicon-home"></span>Home</a>
         </li>
-        <li>
-          <a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a>
-        </li>
-        <li>
-          <a href="download.html"><span
-          class="glyphicon glyphicon-download"></span>Download</a>
-        </li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="login.html"><span class="glyphicon glyphicon-log-in"></span>
-          Login</a>
+          <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>
+          Logout</a>
         </li>
       </ul>
     </div>
+    </nav>
     <!--  Navigation Bar end -->
     <!--  Logo Code -->
     <div class="logo">
-      <a href="/" class="ideagen-logo" title="Ideagen.com"><img src="images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+      <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
     </div>
     <!--  Logo Code end -->
     <h3>
@@ -196,45 +242,85 @@
     </h3>
     <!--  Create_User HTMl access button -->
     <div class="container">
+
+      <!--  path control -->
+      <a href="/admin/user/create">
       <!--  Image path control -->
       <img src="images/AddUser.png" alt="Avatar" class="image" />
       <div class="overlay">
-        <!--  path control -->
-        <a href="createUser.html"> </a>
         <div class="text">
           Create a User
         </div>
       </div>
+      </a>
     </div>
     <!--  View_User HTML access button -->
     <div class="container">
+
+      <!--  path control -->
+      <a href="viewUser.html">
       <!--  Image path control -->
       <img src="images/EditUser.png" alt="Avatar" class="image" />
       <div class="overlay">
-        <!--  path control -->
-        <a href="ViewUser.html"> </a>
         <div class="text">
           View and Edit Users
         </div>
       </div>
+      </a>
     </div>
     <!--  Home_Page HTML access button -->
     <div class="container">
+
+      <!--  path control, Diverts to download for the moment -->
+      <a href="/logout">
       <!--  Image path control -->
-      <img src="images/AdminHome.png" alt="Avatar" class="image" />
+      <img src="images/Logout.png" alt="Avatar" class="image" />
       <div class="overlay">
-        <!--  path control, Diverts to download for the moment -->
-        <a href="download.html"> </a>
         <div class="text">
-          Return to home page
+          Logout
         </div>
       </div>
+      </a>
     </div>
     <!--  Full Dynamic Table function, with search function -->
     <!--  Main User Table -->
     <input type="text" id="UserInput" onkeyup="myFunction()" />
-     <!--  Search section Script --> <script type="text/javascript"
-    xml:space="preserve">//<![CDATA[
+     <!--  Search section Script --> 
+	 <script type="text/javascript" xml:space="preserve">//<![CDATA[
+	    $( document ).ready(function()
+		{
+			var allUsers;
+			$.getJSON('rest/user/getAll', function(result)
+			{
+				if(result != null) // Check result exists
+				{
+					if (result.length > 0) // Check its not empty
+					{ 
+						if(result[0].type != "error") // Check its not full of errors
+						{
+							allUsers = result;
+							console.log(allUsers); // for debug
+							$.each(allUsers, function(i, item) // loop through all the users
+							{
+								/* Create a table cell markup for each user property */
+								var firstName = "<td>" + item.firstname +"</td>";
+								var surname = "<td>" + item.surname + "</td>";
+								var username = "<td>" + item.username + "</td>";
+								var id ="<td>" + item.id + "</td>";
+								var role = "<td>" + item.role + "</td>";
+								var action ='<td><a href="/admin/user/' + item.id +'">' + '<img src ="/images/editUserSmall.png" alt = "EditUser" /> </a></td>';
+								var row = "<tr>" + firstName + surname + username + id + role + action + "</tr>"; // Wrap cells in table row markup
+								console.log(row); // for debug
+								$("#UserTable tbody").append(row);  // add to table
+							});
+						}
+					}
+				}
+		});
+	});
+	 
+	 
+	 
     //Script to control search bar
     //My Jscript sucks, amend accordingly
     function myFunction() {
@@ -278,83 +364,21 @@
           Username
         </th>
         <!--  User Password -->
-        <th style="width:25%;">
-          Password
+        <th style="width:10%;">
+          UID
         </th>
         <!--  User Role -->
         <th style="width:15%;">
           Role
         </th>
+        <!-- Actions -->
+        <th style="width:15%;">
+          Actions
+        </th>
       </tr>
-      <!--  Exemplar format, BOLD text is for me because I am an idiot -->
-      <tr>
-        <!--  FIRST: ONE: 1; Username -->
-        <td>
-          Lewis
-        </td>
-        <!--  SECOND: TWO: 2; Surname -->
-        <td>
-          Duncan
-        </td>
-        <!--  THIRD: THREE: 3; Username -->
-        <td>
-          Administrator
-        </td>
-        <!--  FOURTH: FOUR: 4; Password -->
-        <td>
-          ExamplePassword
-        </td>
-        <!--  FIFTH: FIVE: 5; System Role -->
-        <td>
-          Admin
-        </td>
-      </tr>
-      <tr>
-        <!--  FIRST: ONE: 1; Username -->
-        <td>
-          Ryan
-        </td>
-        <!--  SECOND: TWO: 2; Surname -->
-        <td>
-          Cobb
-        </td>
-        <!--  THIRD: THREE: 3; Username -->
-        <td>
-          COBBRYA
-        </td>
-        <!--  FOURTH: FOUR: 4; Password -->
-        <td>
-          Pass
-        </td>
-        <!--  FIFTH: FIVE: 5; System Role -->
-        <td>
-          System
-        </td>
-      </tr>
-      <tr>
-        <!--  FIRST: ONE: 1; Username -->
-        <td>
-          Zeus
-        </td>
-        <!--  SECOND: TWO: 2; Surname -->
-        <td>
-          ASJAS
-        </td>
-        <!--  THIRD: THREE: 3; Username -->
-        <td>
-          ASAS
-        </td>
-        <!--  FOURTH: FOUR: 4; Password -->
-        <td>
-          ASASS
-        </td>
-        <!--  FIFTH: FIVE: 5; System Role -->
-        <td>
-          ASAS
-        </td>
-      </tr>
-      <!--  Exemplar end -->
-      <!--  Table Close -->
+      <tbody>
+      
+      </tbody>
     </table>
   </body>
 </html>
