@@ -17,7 +17,6 @@
         type="text/javascript" xml:space="preserve"></script><script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         type="text/javascript" xml:space="preserve"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -66,24 +65,24 @@
                                                 <td>
                                                     First Name:
                                                 </td>
-                                                <td id ="firstName">
-                                                    
+                                                <td>
+                                                    insert
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     Surname:
                                                 </td>
-                                                <td id = "surname">
-                                                    
+                                                <td>
+                                                    insert
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     Username:
                                                 </td>
-                                                <td id = "username">
-                                                    
+                                                <td>
+                                                    insert
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -108,19 +107,5 @@
                 </div>
             </div>
         </div>
-    	<script>
-		$( document ).ready(function()
-		{
-			var url = window.location.href;
-			var id = url.substr(url.length - 1);
-			$.getJSON("/rest/user/byId/" + id, function(result) 
-			{
-				console.log(result); // for debug
-				$("#firstName").append(result.firstname);
-				$("#surname").append(result.surname);
-				$("#username").append(result.username);
-			});
-		});
-		</script>
     </body>
 </html>
