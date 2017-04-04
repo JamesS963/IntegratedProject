@@ -46,7 +46,6 @@ public class FileController {
      */
     @GetMapping("/upload")
     public String uploadForm(Model model) {
-        System.out.println("Upload get method firing and printing...");
         model.addAttribute("document", new Document());
         return "upload";
     }
@@ -57,7 +56,7 @@ public class FileController {
      * @param redirectAttributes
      * @return String
      */
-    @PostMapping("/download")
+    @PostMapping("/uploadLanding")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes,
                                    @ModelAttribute Document document) {
@@ -85,7 +84,12 @@ public class FileController {
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/download";
+        return "redirect:/uploadLanding";
+    }
+
+    @GetMapping("/uploadLanding")
+    public String uploadLanding() {
+        return "userDashboard";
     }
 
     /***
