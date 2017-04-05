@@ -32,7 +32,7 @@ public class ShareController {
     /** Creates share request and returns share if permissions etc are correct **/
     @RequestMapping(value = "/shareRequest/{docId}/{distribId}")
     public Object shareRequest(@PathVariable("docID") String docId,
-                               @PathVariable("distribId") String distribId){
+                               @PathVariable("distribId") String distribUsername){
         long id, distrib;
         User loggedUser, distributee;
         Document document;
@@ -41,12 +41,11 @@ public class ShareController {
         try{
             /* Find document and distributee */
             id = Long.parseLong(docId);
-            distrib = Long.parseLong(distribId);
             document = documentDao.findById(id);
-            distributee = userDao.findById(distrib);
+            distributee = userDao.findByUsername(distribUsername);
         }
         catch(Exception e){
-            return new Error("invalid document or distrib ID", e.getMessage());
+            return new Error("invalid document or distrib username", e.getMessage());
         }
         try{
             /* Get logged user */

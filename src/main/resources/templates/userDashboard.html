@@ -1,141 +1,245 @@
-<?xml version="1.0" encoding="utf-8"?>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!DOCTYPE html
-   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-    <head>
-        <meta content="" />
-        <title>
-            User Dashboard
-        </title>
-        <meta content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <link href="/css/styleSheet.css" rel="stylesheet" type="text/css" /><script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-        type="text/javascript" xml:space="preserve"></script><script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        type="text/javascript" xml:space="preserve"></script>
-        <style type="text/css" xml:space="preserve">
-        section.userdash{ margin-top: 20px; margin-bottom: 30px; padding: 0; }
-        section.userdash aside{ width: 33%; float: left;  text-align: center;}
-
-        section.userdash .content { margin: 15px; background: no-repeat center top; background-size: 75px 75px; padding-top: 85px; }
-
-        section.userdash aside h3 a { color: #000; text-decoration: none; }
-        section.userdash aside h3 a:hover { text-decoration: underline; }
-
-    </style>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="navbar-header">s
-                <a class="navbar-brand" href="#"></a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="/userDashboard.html"><span
-                    class="glyphicon glyphicon-home"></span>Home</a>
-                </li>
-                <li>
-                    <a href="upload.html"><span
-                    class="glyphicon glyphicon-upload"></span>Upload</a>
-                </li>
-                <li>
-                    <a href="download.html"><span
-                    class="glyphicon glyphicon-download"></span>Download</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/logout"><span
-                    class="glyphicon glyphicon-log-in"></span> Log Out</a>
-                </li>
-            </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
         </div>
-        <div class="content create">
-            <a href="upload.html"> </a>
-            <h3>
-                <u>Create/upload new document</u>
-            </h3>
-            <p>
-                Click here to create/ upload a new document to the system.
-            </p>
-            <img src="/images/upload.jpg" width="256" height="256" alt="" />
-        </div>
-        <div class="content viewdocs">
-            <a href="documentView.html"></a>
-            <h3>
-                <u>Your Documents</u>
-            </h3>
-            <p></p>
-            <p></p>
-            <p></p>
-            <div>
-                <ul>
-                    <li>
-                        <table>
-                            <tr>
-                                <td>
-                                    : ID <br />
-                                </td>
-                                <td>
-                                    : Title <br />
-                                </td>
-                                <td>
-                                    : Revision No <br />
-                                </td>
-                                <td>
-                                    :FilePath <br />
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <a></a>
-                    </li>
-                </ul>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="hero-widget well well-sm">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-upload"></i>
+                </div>
+                <div class="text">
+                    <label class="text-muted">Upload Document</label>
+                </div>
+                <div class="options">
+                    <a href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
+                </div>
             </div>
         </div>
-        <div class="content shareviewdoc">
-            <h3>
-                <u>Shared Documents </u>
-            </h3>
-            <p></p>
-            <p></p>
-            <p></p>
-            <div>
-                <ul>
-                    <li>
-                        <table>
-                            <tr>
-                                <td>
-                                    : ID <br />
-                                </td>
-                                <td>
-                                    : Title <br />
-                                </td>
-                                <td>
-                                    : Revision No <br />
-                                </td>
-                                <td>
-                                    :FilePath <br />
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <a></a>
-                    </li>
-                </ul>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User's Name</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center">  <img src="user-avatar.png" alt=""class="img-circle img-responsive"/> </div>
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>First Name: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Surname: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Username: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="content viewuser">
-            <h3>
-                <u> View your user information</u>
-            </h3>
-        </div>
-    </body>
+    </div>
+<div class="container">
+    <!--<div class="row">-->
+        <div class="col-md-8 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-10">
+                            <h3 class="panel-title">Documents</h3>
+                            <div class="input-group">
+                                <div class="input-group-btn search-panel">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span id="search_concept">Filter by</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">A-Z</a></li>
+                                        <li><a href="#">Date</a></li>
+                                        <li><a href="#">Revisions</a></li>
+                                        <li><a href="#">Document Title</a></li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="search_param" value="all" id="search_param">
+                                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th><em class="fa fa-cog"></em></th>
+                            <th class="hidden-xs">Doc ID</th>
+                            <th>Doc Title</th>
+                            <th>Username</th>
+                            <th>Active</th>
+                            <th>Revisions</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td align="center">
+
+                            </td>
+                            <td class="hidden-xs">1</td>
+                            <td>Report</td>
+                            <td>ross@hotmail.com</td>
+                            <td>Yes</td>
+                            <td>3</td>
+                            <td>03/04/2017</td>
+                            <td><div class="action-buttons">
+                                <a href="#"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>
+                                <a href="#" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>
+                            </div></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<!--<section class ="userdash">-->
+    <!--<aside>-->
+        <!--<div class ="content create">-->
+            <!--<a href="upload.html">-->
+                <!--<h3><u>Create/upload new document</u></h3>-->
+                <!--<p> Click here to create/ upload a new document to the system.</p>-->
+                <!--<img src ="upload.jpg" width="256" height="256"/>-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</aside>-->
+
+    <!--<aside>-->
+        <!--<div class ="content viewdocs">-->
+            <!--<a href="documentView.html"></a>-->
+            <!--<h3><u>Your Documents</u></h3>-->
+
+            <!--<p th:text="'docId: ' + ${document.docId}" />-->
+            <!--<p th:text="'revisionNo: ' + ${document.revisionNo}" />-->
+            <!--<p th:text="'title: ' + ${document.title}" />-->
+
+            <!--<div>-->
+
+                <!--<ul>-->
+                    <!--<table>-->
+                        <!--<tr th:each="doc : ${documents}">-->
+                            <!--<td th:text="${doc.docId}"> : ID <br/> </td>-->
+                            <!--<td th:text="${doc.title}"> : Title <br/> </td>-->
+                            <!--<td th:text="${doc.revisionNo}"> : Revision No <br/> </td>-->
+                            <!--<td th:text="${doc.filepath}">:FilePath <br/> </td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+
+                    <!--<li th:each="file : ${files}">-->
+                        <!--<a th:href="${file}" th:text="${file}" />-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</aside>-->
+    <!--<aside>-->
+        <!--<div class ="content shareviewdoc">-->
+            <!--<h3><u>Shared Documents  </u></h3>-->
+            <!--<p th:text="'docId: ' + ${document.docId}" />-->
+            <!--<p th:text="'revisionNo: ' + ${document.revisionNo}" />-->
+            <!--<p th:text="'title: ' + ${document.title}" />-->
+
+            <!--<div>-->
+
+                <!--<ul>-->
+                    <!--<table>-->
+                        <!--<tr th:each="doc : ${documents}">-->
+                            <!--<td th:text="${doc.docId}"> : ID <br/> </td>-->
+                            <!--<td th:text="${doc.title}"> : Title <br/> </td>-->
+                            <!--<td th:text="${doc.revisionNo}"> : Revision No <br/> </td>-->
+                            <!--<td th:text="${doc.filepath}">:FilePath <br/> </td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+
+                    <!--<li th:each="file : ${files}">-->
+                        <!--<a th:href="${file}" th:text="${file}" />-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</aside>-->
+
+    <!--<aside>-->
+        <!--<div class ="content viewuser">-->
+            <!--<h3><u> View your user information</u></h3>-->
+
+        <!--</div>-->
+    <!--</aside>-->
+
+    <!--<style>-->
+        <!--section.userdash{ margin-top: 20px; margin-bottom: 30px; padding: 0; }-->
+        <!--section.userdash aside{ width: 33%; float: left;  text-align: center;}-->
+        <!--section.userdash .content { margin: 15px; background: no-repeat center top; background-size: 75px 75px; padding-top: 85px; }-->
+        <!--section.userdash aside h3 a { color: #000; text-decoration: none; }-->
+        <!--section.userdash aside h3 a:hover { text-decoration: underline; }-->
+    <!--</style>-->
+
+<!--</section>-->
+
+    </div>
+</div>
+</body>
 </html>

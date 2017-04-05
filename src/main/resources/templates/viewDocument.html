@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!DOCTYPE html
-   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta content="" />
-    <title>
-      View Document
-    </title>
-    <meta content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link href="css/styleSheet.css" rel="stylesheet" type="text/css" /><script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-    type="text/javascript" xml:space="preserve"></script><script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    type="text/javascript" xml:space="preserve"></script>
-    <style type="text/css" xml:space="preserve">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
 
-section.docview{ margin-top: 20px; margin-bottom: 30px; padding: 6px; }
-section.docview aside{ width: 33%; float: left;  text-align: center;}
-
-section.docview .content { margin: 15px; background: no-repeat center top; background-size: 75px 75px; padding-top: 85px; }
-
-section.docview aside h3 a { color: #000; text-decoration: none; }
-section.docview aside h3 a:hover { text-decoration: underline; }
-</style>
-  </head>
-  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"></a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="/userDashboard.html"><span class="glyphicon glyphicon-home"></span>Home</a>
-        </li>
-        <li>
-          <a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a>
-        </li>
-        <li>
-          <a href="download.html"><span
-          class="glyphicon glyphicon-download"></span>Download</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>
-          Logout</a>
-        </li>
-      </ul>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
+            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+        </ul>
     </div>
-    <div class="content view">
-      <a href="filename.?"> </a>
-      <h3>
-        <u>View Document</u>
-      </h3>
-      <p>
-        Click here to view the chosen document
-      </p>
-      <img src="images/document.png" width="256" height="256" alt="" />
+</nav>
+
+<br />
+
+
+        <div class="col-sm-7 col-md-12">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Document View</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center">  <img src="images/document-image.png" alt=""class="img-responsive"> </div>
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>ID: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Author: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Active: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Revision No.: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Created: </td>
+                                        <td>insert</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-1">
+                                    <div class="hero-widget well well-sm">
+                                        <div class="icon">
+                                            <i class="glyphicon glyphicon-download"></i>
+                                        </div>
+                                        <div class="text">
+                                            <label class="text-muted">Download Document</label>
+                                        </div>
+                                        <div class="options">
+                                            <a href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="content download">
-      <a href="downloadfile.thing"> </a>
-      <h3>
-        <u>Download document</u>
-      </h3>
-      <p>
-        Click here to download the chosen document
-      </p>
-      <img src="/images/download.png" width="256" height="256" alt="" />
-    </div>
-    <div class="content share">
-      <a href="filename.?"> </a>
-      <h3>
-        <u>Share Document</u>
-      </h3>
-      <p>
-        Click here to share the chosen document
-      </p>
-      <img src="images/share.png" width="300" height="300" alt="" />
-    </div>
-    <div class="content create">
-      <a href="upload.html"> </a>
-      <h3>
-        <u>Upload new Document Revision</u>
-      </h3>
-      <p>
-        Click here to create/ upload a new revision of the document.
-      </p>
-      <img src="images/upload.jpg" width="256" height="256" alt="" />
-    </div>
-  </body>
+</body>
 </html>
