@@ -10,12 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Dean on 03/04/2017.
  */
 @Controller
-@RequestMapping("/share")
 public class ShareController {
 
     private final DocumentDao documentDao;
@@ -92,6 +92,12 @@ public class ShareController {
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         User loggedUser = userDao.findByUsername(userDetails.getUsername());
         return shareDao.findAllByDistribId(loggedUser.getId());
+    }
+
+    @RequestMapping(value = "/shareDocument")
+    public ModelAndView shareDocument(){
+        ModelAndView mv = new ModelAndView("shareDocument");
+        return mv;
     }
     /* For test page only */
     @RequestMapping(value = "/testSharing")

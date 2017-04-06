@@ -2,11 +2,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>User Dashboard</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link href="styleSheet.css" rel="stylesheet" type="text/css"/>
+    <link href="css/styleSheet.css" rel="stylesheet" type="text/css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,6 +28,11 @@
     </div>
 </nav>
 
+<header>
+    <div class = "logo">
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+</header>
 <br />
 
 <div class="container">
@@ -53,7 +58,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center">  <img src="user-avatar.png" alt=""class="img-circle img-responsive"/> </div>
+                            <div class="col-md-3 col-lg-3 " align="center">  <img src="images/user-avatar.png" alt="user" class="img-circle img-responsive"/> </div>
                             <div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
@@ -101,8 +106,8 @@
                                         <li><a href="#">Document Title</a></li>
                                     </ul>
                                 </div>
-                                <input type="hidden" name="search_param" value="all" id="search_param">
-                                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                                <input type="hidden" name="search_param" value="all" id="search_param"/>
+                                <input type="text" class="form-control" name="x" placeholder="Search term..."/>
                                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -240,6 +245,5 @@
 <!--</section>-->
 
     </div>
-</div>
 </body>
 </html>

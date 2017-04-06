@@ -4,7 +4,7 @@
    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
     <head>
         <title>
             Share Document
@@ -12,10 +12,10 @@
         <meta content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <link href="css/styleSheet.css" rel="stylesheet" type="text/css" /><script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-        type="text/javascript" xml:space="preserve"></script><script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        <link href="css/styleSheet.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+        type="text/javascript" xml:space="preserve"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         type="text/javascript" xml:space="preserve"></script>
     </head>
     <body>
@@ -38,7 +38,7 @@
             </ul>
         </div>
         <div class="logo">
-            <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+            <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
         </div>
         <div class="container">
             <div class="row">
@@ -79,8 +79,8 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                             <input type="text" name="username" th:field="*{username}" class="form-control input-sm" placeholder="Enter username of recipient">
-                            <input type="submit" value="Share" class="btn btn-info btn-block">
+                             <input type="text" name="username" field="username" class="form-control input-sm" placeholder="Enter username of recipient"/>
+                            <input type="submit" value="Share" class="btn btn-info btn-block"/>
                         </div>
                     </div>
                 </div>
