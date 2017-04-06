@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -150,6 +151,11 @@ public class FileController {
         return "download";
     }
 
+    /***
+     * Toggle activation of
+     * @param docId
+     * @return boolean
+     */
     @RequestMapping("toggleActivation/{docID}")
     public boolean toggleActication(@PathVariable("docId") String docId) {
         Document document;
@@ -163,6 +169,12 @@ public class FileController {
         if(document.isActive()){ document.setActive(false);}
         else {document.setActive(true);}
         return true;
+    }
+
+    @RequestMapping("/viewDocument/{docId}")
+    public ModelAndView viewDocument() {
+        ModelAndView mv = new ModelAndView("viewDocument");
+        return mv;
     }
 
     /***

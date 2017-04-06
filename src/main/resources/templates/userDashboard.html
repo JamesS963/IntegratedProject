@@ -116,13 +116,13 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped table-bordered table-list">
+                    <table id="docTable" class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
                             <th><em class="fa fa-cog"></em></th>
                             <th class="hidden-xs">Doc ID</th>
                             <th>Doc Title</th>
-                            <th>Username</th>
+                            <th>Author</th>
                             <th>Active</th>
                             <th>Revisions</th>
                             <th>Date</th>
@@ -132,22 +132,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td align="center">
 
-                            </td>
-                            <td class="hidden-xs">1</td>
-                            <td>Report</td>
-                            <td>ross@hotmail.com</td>
-                            <td>Yes</td>
-                            <td>3</td>
-                            <td>03/04/2017</td>
-                            <td><div class="action-buttons">
-                                <a href="#"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>
-                                <a href="#" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>
-                            </div></td>
-
-                        </tr>
                         </tbody>
                     </table>
 
@@ -157,93 +142,59 @@
                     </div>
                 </div>
             </div>
-
-
-<!--<section class ="userdash">-->
-    <!--<aside>-->
-        <!--<div class ="content create">-->
-            <!--<a href="upload.html">-->
-                <!--<h3><u>Create/upload new document</u></h3>-->
-                <!--<p> Click here to create/ upload a new document to the system.</p>-->
-                <!--<img src ="upload.jpg" width="256" height="256"/>-->
-            <!--</a>-->
-        <!--</div>-->
-    <!--</aside>-->
-
-    <!--<aside>-->
-        <!--<div class ="content viewdocs">-->
-            <!--<a href="documentView.html"></a>-->
-            <!--<h3><u>Your Documents</u></h3>-->
-
-            <!--<p th:text="'docId: ' + ${document.docId}" />-->
-            <!--<p th:text="'revisionNo: ' + ${document.revisionNo}" />-->
-            <!--<p th:text="'title: ' + ${document.title}" />-->
-
-            <!--<div>-->
-
-                <!--<ul>-->
-                    <!--<table>-->
-                        <!--<tr th:each="doc : ${documents}">-->
-                            <!--<td th:text="${doc.docId}"> : ID <br/> </td>-->
-                            <!--<td th:text="${doc.title}"> : Title <br/> </td>-->
-                            <!--<td th:text="${doc.revisionNo}"> : Revision No <br/> </td>-->
-                            <!--<td th:text="${doc.filepath}">:FilePath <br/> </td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-
-                    <!--<li th:each="file : ${files}">-->
-                        <!--<a th:href="${file}" th:text="${file}" />-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-    <!--</aside>-->
-    <!--<aside>-->
-        <!--<div class ="content shareviewdoc">-->
-            <!--<h3><u>Shared Documents  </u></h3>-->
-            <!--<p th:text="'docId: ' + ${document.docId}" />-->
-            <!--<p th:text="'revisionNo: ' + ${document.revisionNo}" />-->
-            <!--<p th:text="'title: ' + ${document.title}" />-->
-
-            <!--<div>-->
-
-                <!--<ul>-->
-                    <!--<table>-->
-                        <!--<tr th:each="doc : ${documents}">-->
-                            <!--<td th:text="${doc.docId}"> : ID <br/> </td>-->
-                            <!--<td th:text="${doc.title}"> : Title <br/> </td>-->
-                            <!--<td th:text="${doc.revisionNo}"> : Revision No <br/> </td>-->
-                            <!--<td th:text="${doc.filepath}">:FilePath <br/> </td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-
-                    <!--<li th:each="file : ${files}">-->
-                        <!--<a th:href="${file}" th:text="${file}" />-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-    <!--</aside>-->
-
-    <!--<aside>-->
-        <!--<div class ="content viewuser">-->
-            <!--<h3><u> View your user information</u></h3>-->
-
-        <!--</div>-->
-    <!--</aside>-->
-
-    <!--<style>-->
-        <!--section.userdash{ margin-top: 20px; margin-bottom: 30px; padding: 0; }-->
-        <!--section.userdash aside{ width: 33%; float: left;  text-align: center;}-->
-        <!--section.userdash .content { margin: 15px; background: no-repeat center top; background-size: 75px 75px; padding-top: 85px; }-->
-        <!--section.userdash aside h3 a { color: #000; text-decoration: none; }-->
-        <!--section.userdash aside h3 a:hover { text-decoration: underline; }-->
-    <!--</style>-->
-
-<!--</section>-->
-
     </div>
+<script>
+$( document ).ready(function() {
+    var user;
+    $.getJSON("/rest/getLoggedUser", function(result) {
+        user = result;
+        console.log(user);
+		console.log(user.username);
+		
+		var ownedDocs;		
+		$.getJSON("rest/document/byAuthor/" + user.username, function(result) {
+			console.log(result);
+			ownedDocs = result;
+			console.log(ownedDocs);
+			
+			$.each(ownedDocs, function(i, item) {
+				
+				var relationship = "<td>Owned</td>";
+				
+				var id = "<td>" + item.id + "</td>";
+				var title = "<td>" + item.title + "</td>";
+				var author = "<td>" + item.username + "</td>";
+				console.log("Author" + author);
+				
+				/* Set active as "Yes" or "No" */
+				var active;
+				if (item.active == true) { active = "Yes";}
+				else { active = "No"; }
+				console.log(active);
+				var active = "<td>" + active + "</td>";
+				console.log("Active: " + active);
+				
+				var revisions = item.revisionNo;
+				
+				/* Parse date number and wrap */
+				var date = new Date(1000*item.creationDate);
+				date = "<td>" + date.toLocaleString() + "</td>";
+				
+				/* Create and wrap action buttons */
+				var wrapPrefix = '<td><div class="action-buttons">';
+				var wrapSuffix = '</div></td>';
+				var viewButton = '<a href="/viewDocument/' + item.id + '"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>'
+				var shareButton = '<a href="/shareDocument/'+ item.id +'" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>'
+				var actionButtons = wrapPrefix + viewButton + shareButton + wrapSuffix;
+				
+				/* Create table row and append to table */
+				var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
+				$("tbody").append(tableRow);
+			});
+		});
+	});
+}); 
+
+</script>
 </body>
 </html>

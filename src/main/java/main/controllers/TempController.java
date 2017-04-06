@@ -45,11 +45,6 @@ public class TempController {
         return mv;
     }
 
-    @RequestMapping(value ="/viewDocument", method=RequestMethod.GET)
-    public ModelAndView viewDocument() {
-        ModelAndView mv = new ModelAndView("viewDocument");
-        return mv;
-    }
 
 
 

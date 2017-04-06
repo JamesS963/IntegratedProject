@@ -104,9 +104,18 @@ public class JsonController {
          }
         }
 
-    @RequestMapping (method = RequestMethod.GET, value = "document/byAuthor/{userId}")
-    public Iterable<Document> getAllDocumentsByAuthor(@PathVariable("userId") String userId) {
-        return documentDao.findAllByAuthor(Long.parseLong(userId));
+    @RequestMapping (method = RequestMethod.GET, value = "/document/byAuthor/{username}")
+    public Iterable<Document> getAllDocumentsByAuthor(@PathVariable("username") String username) {
+       try {
+           System.out.println(username);
+           Iterable<Document> docs = documentDao.findAllByAuthor(username);
+           return docs;
+       }
+       catch(Exception e) {
+           System.out.println(username);
+           e.printStackTrace();
+           return null;
+       }
     }
 
     @RequestMapping (value ="/getLoggedUser")

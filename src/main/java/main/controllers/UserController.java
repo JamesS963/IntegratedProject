@@ -67,6 +67,12 @@ public class UserController {
         return mv;
     }
 
+    /***
+     * Take a stringified user object from the site as http request and maps to object
+     * @param userId
+     * @param jsonString
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET, value ="editUser/{userId}/{jsonString}")
     public Object editUser(@PathVariable("userId") String userId,
                            @PathVariable("jsonString") String jsonString){
