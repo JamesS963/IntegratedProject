@@ -150,6 +150,21 @@ public class FileController {
         return "download";
     }
 
+    @RequestMapping("toggleActivation/{docID}")
+    public boolean toggleActication(@PathVariable("docId") String docId) {
+        Document document;
+        try {
+             document = documentDao.findById(Long.parseLong(docId));
+        } catch (Exception e) {
+            System.out.println("Error toggling activation, invalid docId" + e.getMessage());
+            return false;
+        }
+
+        if(document.isActive()){ document.setActive(false);}
+        else {document.setActive(true);}
+        return true;
+    }
+
     /***
      * Handles FileNotFound exceptions
      * @param exc
