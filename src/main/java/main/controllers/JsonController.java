@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Iterator;
+
 
 /**
  * Created by Dean on 21/03/2017.
@@ -101,6 +103,11 @@ public class JsonController {
             return null;
          }
         }
+
+    @RequestMapping (method = RequestMethod.GET, value = "document/byAuthor/{userId}")
+    public Iterable<Document> getAllDocumentsByAuthor(@PathVariable("userId") String userId) {
+        return documentDao.findAllByAuthor(Long.parseLong(userId));
+    }
 
     @RequestMapping (value ="/getLoggedUser")
     Object getLoggedUser() {
