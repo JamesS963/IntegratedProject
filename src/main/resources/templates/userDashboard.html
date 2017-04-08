@@ -23,7 +23,7 @@
             <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+            <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -46,7 +46,7 @@
                     <label class="text-muted">Upload Document</label>
                 </div>
                 <div class="options">
-                    <a href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
+                    <a href="/upload" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
                 </div>
             </div>
         </div>
@@ -64,15 +64,19 @@
                                     <tbody>
                                     <tr>
                                         <td>First Name: </td>
-                                        <td>insert</td>
+                                        <td id ="fname"></td>
                                     </tr>
                                     <tr>
                                         <td>Surname: </td>
-                                        <td>insert</td>
+                                        <td id ="surname"></td>
                                     </tr>
                                     <tr>
                                         <td>Username: </td>
-                                        <td>insert</td>
+                                        <td id ="username"></td>
+                                    </tr>
+                                    <tr>
+                                    	<td>Owned docs: </td>
+                                        <td id = "docCount"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -149,13 +153,19 @@ $( document ).ready(function() {
     $.getJSON("/rest/getLoggedUser", function(result) {
         user = result;
         console.log(user);
-		console.log(user.username);
+		
+		/* Generate User details */
+		$("#fname").append(user.username);
+		$("#surname").append(user.surname);
+		$("#username").append(user.username);
+		
 		
 		var ownedDocs;		
 		$.getJSON("rest/document/byAuthor/" + user.username, function(result) {
-			console.log(result);
 			ownedDocs = result;
 			console.log(ownedDocs);
+			
+			$("#docCount").append(ownedDocs.length);
 			
 			$.each(ownedDocs, function(i, item) {
 				
@@ -163,21 +173,18 @@ $( document ).ready(function() {
 				
 				var id = "<td>" + item.id + "</td>";
 				var title = "<td>" + item.title + "</td>";
-				var author = "<td>" + item.username + "</td>";
-				console.log("Author" + author);
+				var author = "<td>" + item.author + "</td>";
 				
 				/* Set active as "Yes" or "No" */
 				var active;
 				if (item.active == true) { active = "Yes";}
 				else { active = "No"; }
-				console.log(active);
 				var active = "<td>" + active + "</td>";
-				console.log("Active: " + active);
 				
-				var revisions = item.revisionNo;
+				var revisions = "<td>" + item.revisionNo + "</td>";
 				
 				/* Parse date number and wrap */
-				var date = new Date(1000*item.creationDate);
+				var date = new Date(item.creationDate);
 				date = "<td>" + date.toLocaleString() + "</td>";
 				
 				/* Create and wrap action buttons */
@@ -189,12 +196,57 @@ $( document ).ready(function() {
 				
 				/* Create table row and append to table */
 				var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
-				$("tbody").append(tableRow);
+				$("#docTable").append(tableRow);
+			});
+			
+			/* Get shares */
+			var shares = [];
+			$.getJSON("/getSharedWith", function(result) {
+				console.log(result);
+				
+				/* Get docs */
+				$.each(result, function(i, item){
+					var shareDoc;
+					 $.getJSON("rest/document/byId/"+item.docId, function(data) { 
+					 	shares.push(data); 
+					 });
+				console.log(shares);
+				});
+				$.each(shares, function(i, item) {
+					console.log("Loop is triggering!!!");
+					var relationship = "<td>Shared</td>";
+					
+					var id = "<td>" + item.id + "</td>";
+					var title = "<td>" + item.title + "</td>";
+					var author = "<td>" + item.author + "</td>";
+					
+					/* Set active as "Yes" or "No" */
+					var active;
+					if (item.active == true) { active = "Yes";}
+					else { active = "No"; }
+					var active = "<td>" + active + "</td>";
+					
+					var revisions = "<td>" + item.revisionNo + "</td>";
+					
+					/* Parse date number and wrap */
+					var date = new Date(item.creationDate);
+					date = "<td>" + date.toLocaleString() + "</td>";
+					
+					/* Create and wrap action buttons */
+					var wrapPrefix = '<td><div class="action-buttons">';
+					var wrapSuffix = '</div></td>';
+					var viewButton = '<a href="/viewDocument/' + item.id + '"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>'
+					var shareButton = '<a href="/shareDocument/'+ item.id +'" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>'
+					var actionButtons = wrapPrefix + viewButton + shareButton + wrapSuffix;
+					
+					/* Create table row and append to table */
+					var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
+					$("#docTable").append(tableRow);
+				});
 			});
 		});
 	});
 }); 
-
 </script>
 </body>
 </html>

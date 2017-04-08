@@ -98,15 +98,14 @@ public class FileController {
      * @param filename
      * @return ResponseEntity
      */
-    @GetMapping("/files/{username}/{docId}/{revisionNo}/{filename:.+}")
+    @GetMapping("/files/{username}/{docId}/{revisionNo}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile (@PathVariable("username") String username,
                                                @PathVariable("docId") String docId,
-                                               @PathVariable("revisionNo") String revisionNo,
-                                               @PathVariable("filename") String filename)
+                                               @PathVariable("revisionNo") String revisionNo)
     {
         System.out.println("Serve file firing"); // for debug
-        String filepath = username + "/" + docId + "/" + revisionNo + "/" + filename;
+        String filepath = username + "/" + docId + "/" + revisionNo;
         Resource file = storageService.loadAsResource(filepath);
         System.out.println(file.getFilename());
         return ResponseEntity
@@ -115,7 +114,7 @@ public class FileController {
                 .body(file);
     }
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/files//{username}/{docId}/{revisionNo}/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
         Resource file = storageService.loadAsResource(filename);

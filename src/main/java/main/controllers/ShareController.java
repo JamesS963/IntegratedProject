@@ -10,12 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Dean on 03/04/2017.
  */
-@Controller
+@RestController
 public class ShareController {
 
     private final DocumentDao documentDao;
@@ -30,9 +32,9 @@ public class ShareController {
     }
 
     /** Creates share request and returns share if permissions etc are correct **/
-    @RequestMapping(value = "/shareRequest/{docId}/{distribId}")
-    public Object shareRequest(@PathVariable("docID") String docId,
-                               @PathVariable("distribId") String distribUsername){
+    @RequestMapping(method = RequestMethod.GET, value = "/shareRequest/{docId}/{distribUsername}")
+    public Object shareRequest(@PathVariable("docId") String docId,
+                               @PathVariable("distribUsername") String distribUsername){
         long id, distrib;
         User loggedUser, distributee;
         Document document;
@@ -43,9 +45,11 @@ public class ShareController {
             id = Long.parseLong(docId);
             document = documentDao.findById(id);
             distributee = userDao.findByUsername(distribUsername);
+            System.out.println(distributee.getUsername()); // to throw exception if user doesn't exist
         }
         catch(Exception e){
-            return new Error("invalid document or distrib username", e.getMessage());
+            e.printStackTrace();
+            return new Error("Invalid document or distributee username entered", e.getMessage());
         }
         try{
             /* Get logged user */
@@ -54,30 +58,36 @@ public class ShareController {
             loggedUser = userDao.findByUsername(userDetails.getUsername());
         }
         catch (Exception e) {
+            e.printStackTrace();
             return new Error("Error loading loading user details", e.getMessage());
         }
+        try {
         /* check author of doc */
-        if (document.getAuthor() == loggedUser.getUsername()){
+            if (document.getAuthor().equals(loggedUser.getUsername())) {
             /* Check distributee permissions */
-            if(distributee.getRole() == Role.ROLE_DISTRIBUTEE || distributee.getRole() == Role.ROLE_AUTHOR){
-                share = new Share();
-                share.setDocId(document.getId());
-                share.setRevisionNo(document.getRevisionNo());
-                share.setAuthorId(loggedUser.getId());
-                share.setDistribId(distributee.getId());
+                if (distributee.getRole() == Role.ROLE_DISTRIBUTEE || distributee.getRole() == Role.ROLE_AUTHOR) {
+                    share = new Share();
+                    share.setDocId(document.getId());
+                    share.setRevisionNo(document.getRevisionNo());
+                    share.setAuthorId(loggedUser.getId());
+                    share.setDistribId(distributee.getId());
+                } else {
+                    return new Error("Wrong distributee permissions", "Distributee does not have role AUTHOR or DISTRIBUTEE");
+                }
+            } else {
+                return new Error("No author permissions", "Logged user not listed as author on doc object");
             }
-            else {
-                return new Error("Wrong distributee permissions", "Distributee does not have role AUTHOR or DISTRIBUTEE");
-            }
+            shareDao.save(share);
+            return share;
         }
-        else {
-            return new Error("No author permissions", "Logged user not listed as author on doc object");
+        catch(Exception e) {
+            e.printStackTrace();
+            return new Error("Unknown error", e.getMessage());
         }
-        return share;
     }
 
     /* Returns array of all documents shared by loggedUser */
-    @RequestMapping(value = "/getSharing")
+    @RequestMapping(method = RequestMethod.GET, value = "/getSharing")
     public Iterable<Share> getShares(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
@@ -86,20 +96,13 @@ public class ShareController {
     }
 
     /* Returns array of all documents shared with distributee */
-    @RequestMapping(value = "/getSharedWith")
+    @RequestMapping(method = RequestMethod.GET, value = "/getSharedWith")
     public Iterable<Share> getSharedWith() {
+        System.out.println("getSharedWith");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         User loggedUser = userDao.findByUsername(userDetails.getUsername());
         return shareDao.findAllByDistribId(loggedUser.getId());
     }
 
-    @RequestMapping(value = "/shareDocument")
-    public ModelAndView shareDocument(){
-        ModelAndView mv = new ModelAndView("shareDocument");
-        return mv;
-    }
-    /* For test page only */
-    @RequestMapping(value = "/testSharing")
-    public String testSharing() { return "testSharing"; }
 }

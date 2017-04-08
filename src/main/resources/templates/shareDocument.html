@@ -12,7 +12,7 @@
         <meta content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <link href="css/styleSheet.css" rel="stylesheet" type="text/css" />
+        <link href="/css/styleSheet.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
         type="text/javascript" xml:space="preserve"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -38,14 +38,14 @@
             </ul>
         </div>
         <div class="logo">
-            <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+            <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <a href ="/admin/user/create" title="Back" type="button"
+                            <a href ="/userDashboard" title="Back" type="button"
                             class="btn btn-sm btn-success"><i
                             class="glyphicon glyphicon-circle-arrow-left"></i></a>
                             <h3 class="panel-title">
@@ -61,16 +61,14 @@
                                                 <td>
                                                     Document Id:
                                                 </td>
-                                                <td>
-                                                    insert
+                                                <td id = "idCell">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     Document Title:
                                                 </td>
-                                                <td>
-                                                    insert
+                                                <td id = "titleCell">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -78,13 +76,45 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                             <input type="text" name="username" field="username" class="form-control input-sm" placeholder="Enter username of recipient"/>
-                            <input type="submit" value="Share" class="btn btn-info btn-block"/>
+                        <div id="footer" class="panel-footer">
+                             <input id = "usernameField" type="text" name="username" field="username" class="form-control input-sm" placeholder="Enter username of recipient"/>
+                            <input id = "shareButton" type="submit" value="Share" class="btn btn-info btn-block"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+			var doc;
+			$( document ).ready(function()
+			{
+				var url = location.href.split("/");
+				var docId = url[url.length-1];
+				
+				$.getJSON("/rest/document/byId/" + docId, function(result) 
+				{
+					doc = result;
+					$("#idCell").append(doc.id);
+					$("#titleCell").append(doc.title);
+				});
+			});
+			
+			$("#shareButton").click(function()
+			{
+				var username = $("#usernameField").val();
+				$.getJSON("/shareRequest/" + doc.id + "/" + username, function(result) 
+				{
+					console.log(result);
+					if(result.type == "share")
+					{
+						$("#footer").append('<h3 id = "shareFeed"> Document shared successfully with ' + username + '!</h3>');
+					}
+					else
+					{
+						$("#footer").append('<h3 id = "shareFeed">' + result.subtype + '</h3>');
+					}
+				});
+			});
+		</script>
     </body>
 </html>

@@ -67,33 +67,6 @@ public class UserController {
         return mv;
     }
 
-    /***
-     * Take a stringified user object from the site as http request and maps to object
-     * @param userId
-     * @param jsonString
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.GET, value ="editUser/{userId}/{jsonString}")
-    public Object editUser(@PathVariable("userId") String userId,
-                           @PathVariable("jsonString") String jsonString){
-        long id;
-        User newUser;
-        User loadedUser;
 
-        try{ // Checks user exists and id is valid number
-            id = Long.parseLong(userId);
-            loadedUser = userDao.findById(id);
-        }
-        catch(Exception e) { return new Error("Invalid user id", e.getMessage());}
-
-        try{ // Checks jsonString can be mapped as valid User object
-            ObjectMapper mapper = new ObjectMapper();
-            newUser = mapper.readValue(jsonString, User.class);
-        }
-        catch(Exception e){ return new Error("Invalid user string", e.getMessage()); }
-
-        userDao.delete(id); // Deletes previous entry
-        return userDao.save(newUser); // Saves and returns new entry
-    }
 
 }

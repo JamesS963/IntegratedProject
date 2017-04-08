@@ -15,6 +15,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static java.nio.file.Files.walk;
+
 @Service
 public class FileSystemStorageService implements StorageService {
 
@@ -47,7 +49,7 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public Stream<Path> loadAll() {
         try {
-            return Files.walk(this.rootLocation, 6)
+            return walk(this.rootLocation, 6)
                     .filter(path -> !path.equals(this.rootLocation) && !path.toFile().isDirectory())
                     .map(path -> this.rootLocation.relativize(path));
         } catch (IOException e) {
@@ -55,10 +57,20 @@ public class FileSystemStorageService implements StorageService {
         }
 
     }
-
+    /*
     @Override
     public Path load(String filepath) {
         return rootLocation.resolve(filepath);
+    }
+    */
+
+    public Path load(String filepath) {
+        System.out.println(filepath);
+        Path path = rootLocation.resolve(Paths.get(filepath));
+        final File directory = path.toFile();
+        System.out.println(directory.listFiles()[0].toString());
+        return directory.listFiles()[0].toPath();
+
     }
 
     @Override

@@ -45,8 +45,13 @@ public class TempController {
         return mv;
     }
 
-
-
-
+    @RequestMapping(value = "/shareDocument/{docId}", method = RequestMethod.GET)
+    public ModelAndView shareDocument(){
+        ModelAndView mv = new ModelAndView("shareDocument");
+        return mv;
+    }
+    /* For test page only */
+    @RequestMapping(value = "/testSharing")
+    public String testSharing() { return "testSharing"; }
 
 }

@@ -21,12 +21,13 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(StorageService storageService, DocumentDao documentDao, UserDao userDao) {
+    CommandLineRunner init(StorageService storageService, DocumentDao documentDao, UserDao userDao, ShareDao shareDao) {
         return (args) -> {
             /* Uncomment these to wipe database and/or filesystem*/
             //documentDao.deleteAll(); // document database
             //storageService.deleteAll(); // files in filesystem
             //userDao.deleteAll(); // user database
+            //shareDao.deleteAll(); // all Shares
 
             storageService.init(); // don't comment out
         };

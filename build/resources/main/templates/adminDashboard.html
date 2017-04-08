@@ -311,7 +311,7 @@
 								var action ='<td><a href="/admin/user/' + item.id +'">' + '<img src ="/images/editUserSmall.png" alt = "EditUser" /> </a></td>';
 								var row = "<tr>" + firstName + surname + username + id + role + action + "</tr>"; // Wrap cells in table row markup
 								console.log(row); // for debug
-								$("#UserTable tbody").append(row);  // add to table
+								$("#UserTable").append(row);  // add to table
 							});
 						}
 						
