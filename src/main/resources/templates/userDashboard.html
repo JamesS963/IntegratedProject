@@ -148,9 +148,11 @@
             </div>
     </div>
 <script>
-$( document ).ready(function() {
+$( document ).ready(function() 
+{
     var user;
-    $.getJSON("/rest/getLoggedUser", function(result) {
+    $.getJSON("/rest/getLoggedUser", function(result) 
+	{
         user = result;
         console.log(user);
 		
@@ -161,13 +163,15 @@ $( document ).ready(function() {
 		
 		
 		var ownedDocs;		
-		$.getJSON("rest/document/byAuthor/" + user.username, function(result) {
+		$.getJSON("rest/document/byAuthor/" + user.username, function(result) 
+		{
 			ownedDocs = result;
-			console.log(ownedDocs);
+			console.log(ownedDocs); // logging
 			
 			$("#docCount").append(ownedDocs.length);
 			
-			$.each(ownedDocs, function(i, item) {
+			$.each(ownedDocs, function(i, item) 
+			{
 				
 				var relationship = "<td>Owned</td>";
 				
@@ -201,48 +205,48 @@ $( document ).ready(function() {
 			
 			/* Get shares */
 			var shares = [];
-			$.getJSON("/getSharedWith", function(result) {
-				console.log(result);
+			$.getJSON("/getSharedWith", function(result) 
+			{
+				console.log(result); // logging
 				
 				/* Get docs */
-				$.each(result, function(i, item){
+				$.each(result, function(i, item)
+				{
 					var shareDoc;
-					 $.getJSON("rest/document/byId/"+item.docId, function(data) { 
-					 	shares.push(data); 
+					 $.getJSON("rest/document/byId/"+item.docId, function(data)
+					  { 
+					 	shareDoc = data
+						var relationship = "<td>Shared</td>";
+					
+						var id = "<td>" + shareDoc.id + "</td>";
+						var title = "<td>" + shareDoc.title + "</td>";
+						var author = "<td>" + shareDoc.author + "</td>";
+						
+						/* Set active as "Yes" or "No" */
+						var active;
+						if (shareDoc.active == true) { active = "Yes";}
+						else { active = "No"; }
+						var active = "<td>" + active + "</td>";
+						
+						var revisions = "<td>" + shareDoc.revisionNo + "</td>";
+						
+						/* Parse date number and wrap */
+						var date = new Date(shareDoc.creationDate);
+						date = "<td>" + date.toLocaleString() + "</td>";
+						
+						/* Create and wrap action buttons */
+						var wrapPrefix = '<td><div class="action-buttons">';
+						var wrapSuffix = '</div></td>';
+						var viewButton = '<a href="/viewDocument/' + shareDoc.id + '"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>'
+						var shareButton = '<a href="/shareDocument/'+ shareDoc.id +'" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>'
+						var actionButtons = wrapPrefix + viewButton + shareButton + wrapSuffix;
+						
+						/* Create table row and append to table */
+						var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
+						$("#docTable").append(tableRow);
 					 });
-				console.log(shares);
 				});
-				$.each(shares, function(i, item) {
-					console.log("Loop is triggering!!!");
-					var relationship = "<td>Shared</td>";
-					
-					var id = "<td>" + item.id + "</td>";
-					var title = "<td>" + item.title + "</td>";
-					var author = "<td>" + item.author + "</td>";
-					
-					/* Set active as "Yes" or "No" */
-					var active;
-					if (item.active == true) { active = "Yes";}
-					else { active = "No"; }
-					var active = "<td>" + active + "</td>";
-					
-					var revisions = "<td>" + item.revisionNo + "</td>";
-					
-					/* Parse date number and wrap */
-					var date = new Date(item.creationDate);
-					date = "<td>" + date.toLocaleString() + "</td>";
-					
-					/* Create and wrap action buttons */
-					var wrapPrefix = '<td><div class="action-buttons">';
-					var wrapSuffix = '</div></td>';
-					var viewButton = '<a href="/viewDocument/' + item.id + '"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>'
-					var shareButton = '<a href="/shareDocument/'+ item.id +'" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>'
-					var actionButtons = wrapPrefix + viewButton + shareButton + wrapSuffix;
-					
-					/* Create table row and append to table */
-					var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
-					$("#docTable").append(tableRow);
-				});
+				console.log("after the loop"); // logging
 			});
 		});
 	});

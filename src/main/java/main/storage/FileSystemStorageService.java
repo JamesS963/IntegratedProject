@@ -70,7 +70,6 @@ public class FileSystemStorageService implements StorageService {
         final File directory = path.toFile();
         System.out.println(directory.listFiles()[0].toString());
         return directory.listFiles()[0].toPath();
-
     }
 
     @Override

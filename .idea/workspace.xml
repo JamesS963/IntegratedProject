@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbf14497-9863-4ae7-8c52-a7fd4688abac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/Application.class" afterPath="$PROJECT_DIR$/build/classes/main/main/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/build/classes/main/main/config/SecurityConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/controllers/FileController.class" afterPath="$PROJECT_DIR$/build/classes/main/main/controllers/FileController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/controllers/JsonController.class" afterPath="$PROJECT_DIR$/build/classes/main/main/controllers/JsonController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/controllers/TempController.class" afterPath="$PROJECT_DIR$/build/classes/main/main/controllers/TempController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/controllers/UserController.class" afterPath="$PROJECT_DIR$/build/classes/main/main/controllers/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/dao/DocumentDao.class" afterPath="$PROJECT_DIR$/build/classes/main/main/dao/DocumentDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/storage/FileSystemStorageService.class" afterPath="$PROJECT_DIR$/build/classes/main/main/storage/FileSystemStorageService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.lck" afterPath="$PROJECT_DIR$/database/database.lck" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/static/css/styleSheet.css" afterPath="$PROJECT_DIR$/build/resources/main/static/css/styleSheet.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/adminDashboard.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/adminDashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/userDashboard.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/userDashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/viewDocument.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/viewDocument.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java" afterPath="$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/userDashboard.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/userDashboard.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -71,11 +64,11 @@
       <file leaf-file-name="FileSystemStorageService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+            <state relative-caret-position="-38">
+              <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="67" selection-end-column="37" />
               <folding>
-                <marker date="1491659400457" expanded="false" signature="2138:2149" ph=" { " />
-                <marker date="1491659400457" expanded="false" signature="2187:2193" ph=" }" />
+                <marker date="1491659901292" expanded="false" signature="2138:2149" ph=" { " />
+                <marker date="1491659901292" expanded="false" signature="2187:2193" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -661,6 +654,186 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1313,7 +1486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491659589815</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Changed file download so filename doesn't need to be known at front-end, sharing done, userDash nearly finished - needs small bug removed">
+      <created>1491659624502</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1491659624502</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1406,7 +1586,8 @@
     <MESSAGE value="added getAllDocumentByAuthor method to JsonController" />
     <MESSAGE value="added viewDocument/{docId}" />
     <MESSAGE value="Changed file download so filename doesn't need to be known at front-end" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed file download so filename doesn't need to be known at front-end" />
+    <MESSAGE value="Changed file download so filename doesn't need to be known at front-end, sharing done, userDash nearly finished - needs small bug removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed file download so filename doesn't need to be known at front-end, sharing done, userDash nearly finished - needs small bug removed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1792,7 +1973,7 @@
         <state relative-caret-position="352">
           <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1817,11 +1998,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+        <state relative-caret-position="-38">
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="67" selection-end-column="37" />
           <folding>
-            <marker date="1491659400457" expanded="false" signature="2138:2149" ph=" { " />
-            <marker date="1491659400457" expanded="false" signature="2187:2193" ph=" }" />
+            <marker date="1491659901292" expanded="false" signature="2138:2149" ph=" { " />
+            <marker date="1491659901292" expanded="false" signature="2187:2193" ph=" }" />
           </folding>
         </state>
       </provider>
