@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/resources/templates/testRest.html" line="41" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbf14497-9863-4ae7-8c52-a7fd4688abac" name="Default" comment="WIP - most userDash done, sharing done, fileSystemStorage being worked on so will have errors">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/author/2/0/adminDash2.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/author/6/0/notmycode.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/author2/3/0/adminDash.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/author2/5/0/intellijlangs.PNG" />
+    <list default="true" id="bbf14497-9863-4ae7-8c52-a7fd4688abac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/Application.class" afterPath="$PROJECT_DIR$/build/classes/main/main/Application.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/build/classes/main/main/config/SecurityConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/controllers/FileController.class" afterPath="$PROJECT_DIR$/build/classes/main/main/controllers/FileController.class" />
@@ -18,25 +14,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/dao/DocumentDao.class" afterPath="$PROJECT_DIR$/build/classes/main/main/dao/DocumentDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/main/storage/FileSystemStorageService.class" afterPath="$PROJECT_DIR$/build/classes/main/main/storage/FileSystemStorageService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.lck" afterPath="$PROJECT_DIR$/database/database.lck" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/static/css/styleSheet.css" afterPath="$PROJECT_DIR$/build/resources/main/static/css/styleSheet.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/adminDashboard.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/adminDashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/userDashboard.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/userDashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/viewDocument.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/viewDocument.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.properties" afterPath="$PROJECT_DIR$/database/database.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.script" afterPath="$PROJECT_DIR$/database/database.script" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/Application.java" afterPath="$PROJECT_DIR$/src/main/java/main/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/main/config/SecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/controllers/FileController.java" afterPath="$PROJECT_DIR$/src/main/java/main/controllers/FileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/controllers/JsonController.java" afterPath="$PROJECT_DIR$/src/main/java/main/controllers/JsonController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/controllers/ShareController.java" afterPath="$PROJECT_DIR$/src/main/java/main/controllers/ShareController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/controllers/TempController.java" afterPath="$PROJECT_DIR$/src/main/java/main/controllers/TempController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/main/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java" afterPath="$PROJECT_DIR$/src/main/java/main/storage/FileSystemStorageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/adminDashboard.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminDashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/shareDocument.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/shareDocument.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/testSharing.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/testSharing.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/userDashboard.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/userDashboard.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -636,6 +617,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integrated-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntegratedProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1274,7 +1299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491521181187</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Changed file download so filename doesn't need to be known at front-end">
+      <created>1491659558251</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1491659558251</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1366,7 +1398,8 @@
     <MESSAGE value="added toggleActivation method (&quot;/toggleActivation/{docId}&quot;" />
     <MESSAGE value="added getAllDocumentByAuthor method to JsonController" />
     <MESSAGE value="added viewDocument/{docId}" />
-    <option name="LAST_COMMIT_MESSAGE" value="added viewDocument/{docId}" />
+    <MESSAGE value="Changed file download so filename doesn't need to be known at front-end" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed file download so filename doesn't need to be known at front-end" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
