@@ -95,7 +95,7 @@ public class FileController {
 
     /***
      * File system to website method
-     * @param filename
+     * @param username, docId, revisionNo
      * @return ResponseEntity
      */
     @GetMapping("/files/{username}/{docId}/{revisionNo}")
@@ -148,26 +148,6 @@ public class FileController {
         model.addAttribute("document", document);
 
         return "download";
-    }
-
-    /***
-     * Toggle activation of
-     * @param docId
-     * @return boolean
-     */
-    @RequestMapping("toggleActivation/{docID}")
-    public boolean toggleActication(@PathVariable("docId") String docId) {
-        Document document;
-        try {
-             document = documentDao.findById(Long.parseLong(docId));
-        } catch (Exception e) {
-            System.out.println("Error toggling activation, invalid docId" + e.getMessage());
-            return false;
-        }
-
-        if(document.isActive()){ document.setActive(false);}
-        else {document.setActive(true);}
-        return true;
     }
 
     @RequestMapping("/viewDocument/{docId}")

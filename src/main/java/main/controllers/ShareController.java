@@ -62,18 +62,23 @@ public class ShareController {
             return new Error("Error loading loading user details", e.getMessage());
         }
         try {
-        /* check author of doc */
+            /* check author of doc */
             if (document.getAuthor().equals(loggedUser.getUsername())) {
-            /* Check distributee permissions */
-                if (distributee.getRole() == Role.ROLE_DISTRIBUTEE || distributee.getRole() == Role.ROLE_AUTHOR) {
-                    share = new Share();
-                    share.setDocId(document.getId());
-                    share.setRevisionNo(document.getRevisionNo());
-                    share.setAuthorId(loggedUser.getId());
-                    share.setDistribId(distributee.getId());
-                } else {
-                    return new Error("Wrong distributee permissions", "Distributee does not have role AUTHOR or DISTRIBUTEE");
+                /* Check document is active */
+                if (document.isActive()) {
+                    /* Check distributee permissions */
+                    if (distributee.getRole() == Role.ROLE_DISTRIBUTEE || distributee.getRole() == Role.ROLE_AUTHOR) {
+                        share = new Share();
+                        share.setDocId(document.getId());
+                        share.setRevisionNo(document.getRevisionNo());
+                        share.setAuthorId(loggedUser.getId());
+                        share.setDistribId(distributee.getId());
+                    } else {
+                        return new Error("Wrong distributee permissions", "Distributee does not have role AUTHOR or DISTRIBUTEE");
+                    }
                 }
+                else { return new Error("Document must be activated before it can be shared",
+                        "Document must be activated before it can be shared"); }
             } else {
                 return new Error("No author permissions", "Logged user not listed as author on doc object");
             }
@@ -98,7 +103,6 @@ public class ShareController {
     /* Returns array of all documents shared with distributee */
     @RequestMapping(method = RequestMethod.GET, value = "/getSharedWith")
     public Iterable<Share> getSharedWith() {
-        System.out.println("getSharedWith");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         User loggedUser = userDao.findByUsername(userDetails.getUsername());

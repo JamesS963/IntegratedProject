@@ -1,12 +1,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>User Dashboard</title>
+    <title>View Document</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link href="css/styleSheet.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/styleSheet.css" rel="stylesheet" type="text/css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,18 +18,17 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
-            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
+            <li class="active"><a href="/userDashboard"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="/upload"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
         </ul>
     </div>
 </nav>
 <header>
     <div class = "logo">
-        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
     </div>
 </header>
 
@@ -44,33 +43,33 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center">  <img src="images/document-image.png" alt="Doc" class="img-responsive"/> </div>
+                            <div class="col-md-3 col-lg-3 " align="center">  <img src="/images/document-image.png" alt="Doc" class="img-responsive"/> </div>
                             <div class=" col-md-9 col-lg-9 ">
-                                <table class="table table-user-information">
+                                <table id = "docTable" class="table table-user-information">
                                     <tbody>
                                     <tr>
                                         <td>ID: </td>
-                                        <td>insert</td>
+                                        <td id ="id"></td>
                                     </tr>
                                     <tr>
                                         <td>Title: </td>
-                                        <td>insert</td>
+                                        <td id = "title"></td>
                                     </tr>
                                     <tr>
                                         <td>Author: </td>
-                                        <td>insert</td>
+                                        <td id = "author"></td>
                                     </tr>
                                     <tr>
                                         <td>Active: </td>
-                                        <td>insert</td>
+                                        <td id = "active"></td>
                                     </tr>
                                     <tr>
                                         <td>Revision No.: </td>
-                                        <td>insert</td>
+                                        <td id = "revisions"></td>
                                     </tr>
                                     <tr>
                                         <td>Date Created: </td>
-                                        <td>insert</td>
+                                        <td id ="date"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -85,7 +84,7 @@
                                             <label class="text-muted">Download Document</label>
                                         </div>
                                         <div class="options">
-                                            <a href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
+                                            <a id ="downloadLink" href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,44 +94,87 @@
             </div>
         </div>
     </div>
+
 <script>
-    $(document).ready(function () {
+$(document).ready(function () 
+{
   var user;
-  $.getJSON("/rest/getLoggedUser",function(result){
-    user=result;
-    console.log(user);
+  $.getJSON("/rest/getLoggedUser",function(result)
+  {
+    user = result;
     console.log(user);
 
-    var docs;
-    $getJSON("'/document/byId/'+${user.docId}",function(result){
+    var doc;
+	var url = location.href.split("/");
+	var docId = url[url.length-1];
+	
+    $.getJSON("/rest/document/byId/"+ docId + "/",function(result)
+	{
       console.log(result);
-      docs=result;
-
-      $each(docs, function (i, item) {
-        var relationship = "<td>Documents</td>";
-        var id = "<td>" + item.id + "</td>";
-        var title = "<td>" + item.title + "</td>";
-        var author = "<td>" + item.username + "</td>";
-
-        var revisions = item.revisionNo;
-
-        var date = new Date(1000*item.creationDate);
-        date = "<td>" + date.toLocaleString() + "</td>";
-
-        var wrapPrefix = '<td><div class="action-buttons">';
-        var wrapSuffix = '</div></td>';
-        var activateButton = '<a href="/toggleActivation/+'item.docID'"><span class="glyphicon glyphicon-eye-open" title="Activate"></span></a>';
-        var downloadButton= '<a href="/files//+'item.username'+/'item.docID'+/+'item.revisionNo'+/+'item.filename'+:.+" ><span class="glyphicon glyphicon-share" title="Share"></span></a>';
-        var actionButtons = wrapPrefix + activateButton + downloadButton + wrapSuffix;
-
-        var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
-        $("tbody").append(tableRow);
-      });
+      doc = result;
+	  
+	  $("#id").append(doc.id);
+	  $("#title").append(doc.title);
+	  $("#author").append(doc.author);
+	  var active;
+	  if (doc.active == true) { active = "Yes"; }
+	  else { active = "No"; }
+	  $("#active").append(active);
+	  $("#revisions").append(doc.revisionNo);
+	  var date = new Date(doc.creationDate);
+	  $("#date").append(date.toLocaleString());
+	  
+	  if (user.username == doc.author) // If user is the document author 
+	  {
+		console.log("if");
+		$("#downloadLink").attr("href","/files/" + doc.author + "/" + doc.id + "/" + doc.revisionNo +"/");
+  		/* Create and wrap action buttons */
+		var wrapPrefix = '<td><div class="action-buttons">';
+		var wrapSuffix = '</div></td>';
+		var activateButton = '<button type = "button" id = "activateButton" href = "" onclick = "toggleActivation()" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i>Toggle Active</button>';
+		var uploadRevisionButton = '<a href = "/uploadRevision/' + doc.id + '" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i>Upload Revision</a>';
+		var authorButtons = '<tr>' + wrapPrefix + activateButton + uploadRevisionButton + wrapSuffix + '</tr>';
+		$("#docTable").append(authorButtons);
+	  }
+	  
+	  else if (doc.active == true) // if document is shared with user and is active
+	  {
+		  console.log("else if");
+		  console.log(doc.active);
+		  $("#downloadLink").attr("href","/files/" + doc.author + "/" + doc.id + "/" + doc.revisionNo +"/");
+	  }
+	  
+	  else // if document is not owned by the user and is not active
+	  {
+		  console.log("else");
+		  $("#downloadLink").click(function()
+		  {
+			  alert("The document must be activated by the author " + doc.author + " before it can be downloaded!");
+		  });
+	  }
+	  
     });
   });
-
-
 });
+
+function toggleActivation()
+{
+	var doc;
+	var url = location.href.split("/");
+	var docId = url[url.length-1];
+	$.getJSON("/rest/toggleActivation/" + docId, function(result)
+	{
+		if (result.type == "document")
+		{
+			doc = result;
+			var active;
+			if (doc.active == true) { active = "Yes"; }
+			else { active = "No"; }
+			$("#active").html(active);
+		}
+	});
+}
 </script>
+
 </body>
 </html>

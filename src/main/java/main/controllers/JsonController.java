@@ -131,7 +131,25 @@ public class JsonController {
         }
     }
 
+    /***
+     * Toggle activation of documents
+     * @param docId
+     * @return String
+     */
+    @RequestMapping(value = "toggleActivation/{docId}", method = RequestMethod.GET)
+    public Object toggleActivation(@PathVariable("docId") String docId) {
+        Document document;
+        try {
+            document = documentDao.findById(Long.parseLong(docId));
+        } catch (Exception e) {
+            System.out.println("Error toggling activation, invalid docId" + e.getMessage());
+            return new Error("Error toggling activation, invalid docId", e.getMessage());
+        }
 
+        if(document.isActive()){ document.setActive(false);}
+        else {document.setActive(true);}
+        return documentDao.save(document);
+    }
 
     /***
      * Take a stringified user object from the site as http request and maps to object
