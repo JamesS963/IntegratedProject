@@ -3,6 +3,7 @@ package main.controllers;
 import main.dao.UserDao;
 import main.models.User;
 import main.security.UserDetailsServiceImpl;
+import main.models.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,6 +48,24 @@ public class AdminController {
     public ModelAndView viewUser(@PathVariable("userId") long userId) {
         User user = userDao.findOne(userId);
         ModelAndView mv = new ModelAndView("viewUser");
+        mv.addObject("user", user);
+        return mv;
+    }
+
+    @RequestMapping(value = "/user/edit/submit/{userId}", method=RequestMethod.GET)
+    public String editUserSubmit(@PathVariable("userId") long userId, @PathVariable("editUser") Object editUser) {
+        User user = userDao.findOne(userId);
+        user.setId(userId);
+        try {
+            userDetailsService.registerUser(user);
+        }catch(Exception e) {return "error";}
+        return "redirect:/admin/user/edit"+user.getId();
+    }
+
+    @RequestMapping(value = "/user/edit/{userId}", method=RequestMethod.GET)
+    public ModelAndView editUser(@PathVariable("userId") long userId) {
+        User user = userDao.findOne(userId);
+        ModelAndView mv = new ModelAndView("editUser");
         mv.addObject("user", user);
         return mv;
     }

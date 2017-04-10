@@ -131,12 +131,14 @@ public class JsonController {
         }
     }
 
+
+
     /***
      * Take a stringified user object from the site as http request and maps to object
      * @param userId
      * @param jsonString
      * @return
-     */
+
     @RequestMapping(method = RequestMethod.POST, value ="editUser/{userId}/{jsonString}")
     public Object editUser(@PathVariable("userId") String userId,
                            @PathVariable("jsonString") String jsonString){
@@ -159,6 +161,7 @@ public class JsonController {
         userDao.delete(id); // Deletes previous entry
         return userDao.save(newUser); // Saves and returns new entry
     }
+     */
 
 }
 

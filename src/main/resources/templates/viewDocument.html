@@ -95,5 +95,44 @@
             </div>
         </div>
     </div>
+<script>
+    $(document).ready(function () {
+  var user;
+  $.getJSON("/rest/getLoggedUser",function(result){
+    user=result;
+    console.log(user);
+    console.log(user);
+
+    var docs;
+    $getJSON("'/document/byId/'+${user.docId}",function(result){
+      console.log(result);
+      docs=result;
+
+      $each(docs, function (i, item) {
+        var relationship = "<td>Documents</td>";
+        var id = "<td>" + item.id + "</td>";
+        var title = "<td>" + item.title + "</td>";
+        var author = "<td>" + item.username + "</td>";
+
+        var revisions = item.revisionNo;
+
+        var date = new Date(1000*item.creationDate);
+        date = "<td>" + date.toLocaleString() + "</td>";
+
+        var wrapPrefix = '<td><div class="action-buttons">';
+        var wrapSuffix = '</div></td>';
+        var activateButton = '<a href="/toggleActivation/+'item.docID'"><span class="glyphicon glyphicon-eye-open" title="Activate"></span></a>';
+        var downloadButton= '<a href="/files//+'item.username'+/'item.docID'+/+'item.revisionNo'+/+'item.filename'+:.+" ><span class="glyphicon glyphicon-share" title="Share"></span></a>';
+        var actionButtons = wrapPrefix + activateButton + downloadButton + wrapSuffix;
+
+        var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
+        $("tbody").append(tableRow);
+      });
+    });
+  });
+
+
+});
+</script>
 </body>
 </html>
