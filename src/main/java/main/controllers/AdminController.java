@@ -4,6 +4,7 @@ import main.dao.UserDao;
 import main.models.User;
 import main.security.UserDetailsServiceImpl;
 import main.models.Error;
+import main.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,9 @@ public class AdminController {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
+
+    @Autowired
+    private StorageService storageService;
 
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
     public ModelAndView createUser() {
@@ -79,6 +83,7 @@ public class AdminController {
     public String deleteUser(@PathVariable("userId") long userId) {
 
         try {
+            storageService.deleteBranch(userDao.findById(userId).getUsername());
             userDao.delete(userId);
         }catch (Exception e){return "error";}
         return "redirect:/adminDashboard.html";

@@ -20,6 +20,8 @@ public interface StorageService {
 
     void deleteAll();
 
+    void deleteBranch(String username);
+
     public Path getRootLocation();
 
 }
