@@ -31,69 +31,67 @@
         <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
     </div>
 </header>
-
 <br />
 
-
-        <div class="col-sm-7 col-md-12">
-            <div class="row">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Document View</h3>
-                    </div>
-                    <div class="panel-body">
+    <div class="col-sm-7 col-md-12">
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Document View</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">  <img src="/images/document-image.png" alt="Doc" class="img-responsive"/> </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table id = "docTable" class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>ID: </td>
+                                    <td id ="id"></td>
+                                </tr>
+                                <tr>
+                                    <td>Title: </td>
+                                    <td id = "title"></td>
+                                </tr>
+                                <tr>
+                                    <td>Author: </td>
+                                    <td id = "author"></td>
+                                </tr>
+                                <tr>
+                                    <td>Active: </td>
+                                    <td id = "active"></td>
+                                </tr>
+                                <tr>
+                                    <td>Revisions: </td>
+                                    <td id = "revisions"></td>
+                                </tr>
+                                <tr>
+                                    <td>Date Created: </td>
+                                    <td id ="date"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center">  <img src="/images/document-image.png" alt="Doc" class="img-responsive"/> </div>
-                            <div class=" col-md-9 col-lg-9 ">
-                                <table id = "docTable" class="table table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <td>ID: </td>
-                                        <td id ="id"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Title: </td>
-                                        <td id = "title"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Author: </td>
-                                        <td id = "author"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Active: </td>
-                                        <td id = "active"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Revisions: </td>
-                                        <td id = "revisions"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date Created: </td>
-                                        <td id ="date"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-md-offset-1">
-                                    <div class="hero-widget well well-sm">
-                                        <div class="icon">
-                                            <i class="glyphicon glyphicon-download"></i>
-                                        </div>
-                                        <div class="text">
-                                            <label class="text-muted">Download Document</label>
-                                        </div>
-                                        <div class="options">
-                                            <a id ="downloadLink" href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
-                                        </div>
+                            <div class="col-md-3 col-md-offset-1">
+                                <div class="hero-widget well well-sm">
+                                    <div class="icon">
+                                        <i class="glyphicon glyphicon-download"></i>
+                                    </div>
+                                    <div class="text">
+                                        <label class="text-muted">Download Document</label>
+                                    </div>
+                                    <div class="options">
+                                        <a id ="downloadLink" href="javascript:;" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <script>
 $(document).ready(function () 
@@ -133,7 +131,9 @@ $(document).ready(function ()
 		var wrapSuffix = '</div></td>';
 		var activateButton = '<button type = "button" id = "activateButton" href = "" onclick = "toggleActivation()" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i>Toggle Active</button>';
 		var uploadRevisionButton = '<a href = "/uploadRevision/' + doc.id + '" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i>Upload Revision</a>';
-		var authorButtons = '<tr>' + wrapPrefix + activateButton + uploadRevisionButton + wrapSuffix + '</tr>';
+		var allRevisionsButton = '<a href = "/revisions/' + doc.id + '" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i>Previous Revisions</a>';
+		
+		var authorButtons = '<tr>' + wrapPrefix + activateButton + allRevisionsButton + uploadRevisionButton + wrapSuffix + '</tr>';
 		$("#docTable").append(authorButtons);
 	  }
 	  

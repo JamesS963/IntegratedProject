@@ -184,6 +184,11 @@ public class FileController {
         return "download";
     }
 
+    @GetMapping("/revisions/{docId}")
+    public ModelAndView allRevisions(@PathVariable("docId")long docId){
+        return new ModelAndView("/revisions");
+    }
+
     @RequestMapping("/viewDocument/{docId}")
     public ModelAndView viewDocument() {
         ModelAndView mv = new ModelAndView("viewDocument");

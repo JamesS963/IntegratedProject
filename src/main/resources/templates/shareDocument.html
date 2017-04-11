@@ -5,116 +5,116 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th = "http://www.thymeleaf.org">
-    <head>
-        <title>
-            Share Document
-        </title>
-        <meta content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <link href="/css/styleSheet.css" rel="stylesheet" type="text/css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-        type="text/javascript" xml:space="preserve"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        type="text/javascript" xml:space="preserve"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"></a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="/adminDashboard.html"><span
-                    class="glyphicon glyphicon-home"></span>Home</a>
-                </li>
+<head>
+    <title>
+        Share Document
+    </title>
+    <meta content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="/css/styleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+    type="text/javascript" xml:space="preserve"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    type="text/javascript" xml:space="preserve"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/adminDashboard.html"><span
+                class="glyphicon glyphicon-home"></span>Home</a>
+            </li>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>
-                    Logout</a>
-                </li>
-            </ul>
-        </div>
-        <div class="logo">
-            <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <a href ="/userDashboard" title="Back" type="button"
-                            class="btn btn-sm btn-success"><i
-                            class="glyphicon glyphicon-circle-arrow-left"></i></a>
-                            <h3 class="panel-title">
-                                Share Document
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class=" col-md-9 col-lg-9 ">
-                                    <table class="table table-user-information">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Document Id:
-                                                </td>
-                                                <td id = "idCell">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Document Title:
-                                                </td>
-                                                <td id = "titleCell">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>
+                Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div class="logo">
+        <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <a href ="/userDashboard" title="Back" type="button"
+                        class="btn btn-sm btn-success"><i
+                        class="glyphicon glyphicon-circle-arrow-left"></i></a>
+                        <h3 class="panel-title">
+                            Share Document
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Document Id:
+                                            </td>
+                                            <td id = "idCell">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Document Title:
+                                            </td>
+                                            <td id = "titleCell">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div id="footer" class="panel-footer">
-                             <input id = "usernameField" type="text" name="username" field="username" class="form-control input-sm" placeholder="Enter username of recipient"/>
-                            <input id = "shareButton" type="submit" value="Share" class="btn btn-info btn-block"/>
-                        </div>
+                    </div>
+                    <div id="footer" class="panel-footer">
+                         <input id = "usernameField" type="text" name="username" field="username" class="form-control input-sm" placeholder="Enter username of recipient"/>
+                        <input id = "shareButton" type="submit" value="Share" class="btn btn-info btn-block"/>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-			var doc;
-			$( document ).ready(function()
+    </div>
+<script>
+	var doc;
+	$( document ).ready(function()
+	{
+		var url = location.href.split("/");
+		var docId = url[url.length-1];
+		
+		$.getJSON("/rest/document/byId/" + docId, function(result) 
+		{
+			doc = result;
+			$("#idCell").append(doc.id);
+			$("#titleCell").append(doc.title);
+		});
+	});
+	
+	$("#shareButton").click(function()
+	{
+		var username = $("#usernameField").val();
+		$.getJSON("/shareRequest/" + doc.id + "/" + username, function(result) 
+		{
+			console.log(result);
+			if(result.type == "share")
 			{
-				var url = location.href.split("/");
-				var docId = url[url.length-1];
-				
-				$.getJSON("/rest/document/byId/" + docId, function(result) 
-				{
-					doc = result;
-					$("#idCell").append(doc.id);
-					$("#titleCell").append(doc.title);
-				});
-			});
-			
-			$("#shareButton").click(function()
+				$("#footer").append('<h3 id = "shareFeed"> Document shared successfully with ' + username + '!</h3>');
+			}
+			else
 			{
-				var username = $("#usernameField").val();
-				$.getJSON("/shareRequest/" + doc.id + "/" + username, function(result) 
-				{
-					console.log(result);
-					if(result.type == "share")
-					{
-						$("#footer").append('<h3 id = "shareFeed"> Document shared successfully with ' + username + '!</h3>');
-					}
-					else
-					{
-						$("#footer").append('<h3 id = "shareFeed">' + result.subtype + '</h3>');
-					}
-				});
-			});
-		</script>
-    </body>
+				$("#footer").append('<h3 id = "shareFeed">' + result.subtype + '</h3>');
+			}
+		});
+	});
+</script>
+</body>
 </html>

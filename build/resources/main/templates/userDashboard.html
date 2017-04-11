@@ -30,7 +30,7 @@
 
 <header>
     <div class = "logo">
-        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
+        <a href="/" class="ideagen-logo" title="Ideagen.com"><img src = "/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
     </div>
 </header>
 <br />
@@ -58,7 +58,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center">  <img src="images/user-avatar.png" alt="user" class="img-circle img-responsive"/> </div>
+                            <div class="col-md-3 col-lg-3 " align="center">  <img src="/images/user-avatar.png" alt="user" class="img-circle img-responsive"/> </div>
                             <div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
@@ -131,8 +131,6 @@
                             <th>Revisions</th>
                             <th>Date</th>
                             <th>Actions</th>
-
-
                         </tr>
                         </thead>
                         <tbody>
@@ -154,7 +152,6 @@ $( document ).ready(function()
     $.getJSON("/rest/getLoggedUser", function(result) 
 	{
         user = result;
-        console.log(user);
 		
 		/* Generate User details */
 		$("#fname").append(user.username);
@@ -166,7 +163,6 @@ $( document ).ready(function()
 		$.getJSON("rest/document/byAuthor/" + user.username, function(result) 
 		{
 			ownedDocs = result;
-			console.log(ownedDocs); // logging
 			
 			$("#docCount").append(ownedDocs.length);
 			
@@ -207,7 +203,6 @@ $( document ).ready(function()
 			var shares = [];
 			$.getJSON("/getSharedWith", function(result) 
 			{
-				console.log(result); // logging
 				
 				/* Get docs */
 				$.each(result, function(i, item)
@@ -238,15 +233,13 @@ $( document ).ready(function()
 						var wrapPrefix = '<td><div class="action-buttons">';
 						var wrapSuffix = '</div></td>';
 						var viewButton = '<a href="/viewDocument/' + shareDoc.id + '"><span class="glyphicon glyphicon-eye-open" title="View Document"></span></a>'
-						var shareButton = '<a href="/shareDocument/'+ shareDoc.id +'" class="trash"><span class="glyphicon glyphicon-share" title="Share"></span></a>'
-						var actionButtons = wrapPrefix + viewButton + shareButton + wrapSuffix;
+						var actionButtons = wrapPrefix + viewButton + wrapSuffix;
 						
 						/* Create table row and append to table */
 						var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
 						$("#docTable").append(tableRow);
 					 });
 				});
-				console.log("after the loop"); // logging
 			});
 		});
 	});
