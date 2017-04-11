@@ -27,7 +27,7 @@
                     class="glyphicon glyphicon-home"></span>Home</a>
         </li>
         <li>
-            <a href="upload.html"><span
+            <a href="/upload"><span
                     class="glyphicon glyphicon-upload"></span>Upload</a>
         </li>
         <li>
@@ -46,7 +46,7 @@
     <a href="" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
 </div>
 <!--<form method="post" enctype="multipart/form-data">-->
-<form name="upload" action="/" th:action="@{uploadLanding}" th:object="${document}" method="POST" enctype="multipart/form-data">
+<form name="upload" action="/" th:action="@{uploadRevisionLanding}" method="POST" enctype="multipart/form-data">
     <div class="container">
         <br />
         <div class="row">
@@ -59,8 +59,9 @@
                     <div class="panel-body">
 
                         <label class="control-label" >Title:</label>
-                        <input class = "file" type="text" th:field="*{title}" />
+                        <label class = "docTitle" th:text="${document.title}" />
                         <label class="control-label">Select File:</label>
+
 
                         <input id="input-2" type="file" name="file" class="file"/>
                         <button type="button" class="btn btn-default file-preview-clear" value="Reset">

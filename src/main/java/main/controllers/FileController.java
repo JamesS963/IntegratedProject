@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
@@ -49,6 +50,18 @@ public class FileController {
     public String uploadForm(Model model) {
         model.addAttribute("document", new Document());
         return "upload";
+    }
+
+    /***
+     * Attaches new file revision to existing Document record
+     * @param model
+     * @param docId
+     * @return
+     */
+    @GetMapping("/uploadRevision/{docId}")
+    public String uploadRevision(Model model, @PathVariable("docId") long docId) {
+        model.addAttribute("document", documentDao.findById(docId));
+        return "uploadRevision";
     }
 
     /***
@@ -88,10 +101,33 @@ public class FileController {
         return "redirect:/uploadLanding";
     }
 
+    @PostMapping("/uploadRevision/uploadRevisionLanding")
+    public RedirectView handleRevisionUpload (@RequestParam("file") MultipartFile file,
+                                              RedirectAttributes redirectAttributes,
+                                              @ModelAttribute Document document) {
+        /* Load logged user */
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        User user = userDao.findByUsername(userDetails.getUsername());
+        System.out.println(document);
+
+        long revisionNo = document.getRevisionNo() + 1;
+        document.setRevisionNo(revisionNo);
+        document.setActive(false);
+         /* Set branch for file */
+        String branch = "/"  +user.getUsername()+ "/" + document.getId() + "/" +document.getRevisionNo()+ "/";
+        storageService.store(file, branch);
+        documentDao.save(document);
+        return new RedirectView("uploadRevisionLanding");
+    }
+
     @GetMapping("/uploadLanding")
     public String uploadLanding() {
         return "userDashboard";
     }
+
+    @GetMapping("/uploadRevisionLanding")
+    public ModelAndView uploadRevisionLanding() { return new ModelAndView("userDashboard"); }
 
     /***
      * File system to website method
