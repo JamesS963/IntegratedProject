@@ -39,7 +39,7 @@
 <div class="logo">
     <a href="www.ideagen.com" class="ideagen-logo" title="Ideagen.com"><img src="/images/ideagen-logo-full-colour.svg" alt="Ideagen PLC" /></a>
 </div>
-<form method="POST" name="user" action="" id="user" th:action="'/admin/user/edit/'+${user.id}" th:object="${editUser}">
+<form method="POST" name="user" action="" id="user" th:action="@{'/admin/user/edit/'+${user.id}}" th:object="${user}">
     <div class="container">
         <div class="row centered-form">
             <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
@@ -108,8 +108,5 @@
         </div>
     </div>
 </form>
-<script>
-
-</script>
 </body>
 </html>

@@ -52,15 +52,6 @@ public class AdminController {
         return mv;
     }
 
-    @RequestMapping(value = "/user/edit/submit/{userId}", method=RequestMethod.GET)
-    public String editUserSubmit(@PathVariable("userId") long userId, @PathVariable("editUser") Object editUser) {
-        User user = userDao.findOne(userId);
-        user.setId(userId);
-        try {
-            userDetailsService.registerUser(user);
-        }catch(Exception e) {return "error";}
-        return "redirect:/admin/user/edit"+user.getId();
-    }
 
     @RequestMapping(value = "/user/edit/{userId}", method=RequestMethod.GET)
     public ModelAndView editUser(@PathVariable("userId") long userId) {
@@ -68,6 +59,29 @@ public class AdminController {
         ModelAndView mv = new ModelAndView("editUser");
         mv.addObject("user", user);
         return mv;
+    }
+
+    @RequestMapping(value = "/user/edit/{userId}", method=RequestMethod.POST)
+    public String editUserSubmit(@PathVariable("userId") long userId, @ModelAttribute("user") User user) {
+        User editUser;
+
+        try {
+            System.out.println(user);
+            user.setId(userId);
+            //userDao.delete(userId);
+            userDao.save(user);
+            //userDetailsService.registerUser(user);
+        }catch(Exception e) {return "error";}
+        return "redirect:/admin/user/"+userId;
+    }
+
+    @RequestMapping(value = "/user/delete/{userId}", method=RequestMethod.GET)
+    public String deleteUser(@PathVariable("userId") long userId) {
+
+        try {
+            userDao.delete(userId);
+        }catch (Exception e){return "error";}
+        return "redirect:/adminDashboard.html";
     }
 
 }

@@ -105,7 +105,9 @@
                             class="btn btn-sm btn-warning"><i
                             class="glyphicon glyphicon-edit"></i></a>
                             <a title="Remove User" type="button"
-                            class="btn btn-sm btn-danger"><i
+                            class="btn btn-sm btn-danger"
+                            th:href="'/admin/user/delete/'+${user.id}"
+                            ><i
                             class="glyphicon glyphicon-remove"></i></a>
                             </span>
                         </div>
