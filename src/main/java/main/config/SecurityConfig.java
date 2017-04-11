@@ -66,6 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .permitAll()
                 .antMatchers("/userDashboard")
                 .access("hasRole('ROLE_ AUTHOR')")
+                .antMatchers("/userDashboard")
+                .access("hasRole('ROLE_DISTRIBUTEE')")
                 .antMatchers("/login")
                 .permitAll()
                 .antMatchers("/admin/**")

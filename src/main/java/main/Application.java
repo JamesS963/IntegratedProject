@@ -32,6 +32,4 @@ public class Application {
             storageService.init(); // don't comment out
         };
     }
-
-
 }

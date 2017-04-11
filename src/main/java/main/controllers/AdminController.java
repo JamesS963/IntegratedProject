@@ -40,7 +40,6 @@ public class AdminController {
     public String createUser(@ModelAttribute("user") User user) {
         User createdUser;
         try {
-            System.out.println(user);
             createdUser = userDetailsService.registerUser(user);
         } catch (Exception e) {
             return "error";

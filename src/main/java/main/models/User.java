@@ -35,10 +35,9 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String type = "user"; // for identifying at clientside
+    private String type = "user";
 
-
-    // believe thats it yeah, the reason why Document[] etc isnt needed is because we use the DAO for accessing that information
+    private boolean newShare = false;
 
     public User() {}
 
@@ -94,4 +93,11 @@ public class User implements Serializable {
         return type;
     }
 
+    public boolean isNewShare() {
+        return newShare;
+    }
+
+    public void setNewShare(boolean newShare) {
+        this.newShare = newShare;
+    }
 }

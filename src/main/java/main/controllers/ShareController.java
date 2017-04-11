@@ -83,6 +83,8 @@ public class ShareController {
                 return new Error("No author permissions", "Logged user not listed as author on doc object");
             }
             shareDao.save(share);
+            distributee.setNewShare(true);
+            userDao.save(distributee);
             return share;
         }
         catch(Exception e) {
@@ -109,4 +111,17 @@ public class ShareController {
         return shareDao.findAllByDistribId(loggedUser.getId());
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/checkShare")
+    public boolean checkShare(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        User loggedUser = userDao.findByUsername(userDetails.getUsername());
+        boolean newShare = loggedUser.isNewShare();
+        if(newShare)
+        {
+            loggedUser.setNewShare(false);
+            userDao.save(loggedUser);
+        }
+        return newShare;
+    }
 }

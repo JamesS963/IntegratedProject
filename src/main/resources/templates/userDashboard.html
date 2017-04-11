@@ -19,8 +19,6 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-            <li><a href="upload.html"><span class="glyphicon glyphicon-upload"></span>Upload</a></li>
-            <li><a href="download.html"><span class="glyphicon glyphicon-download"></span>Download</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -38,16 +36,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
+            <div id="uploadBox" class="hero-widget well well-sm">
                 <div class="icon">
                     <i class="glyphicon glyphicon-upload"></i>
                 </div>
-                <div class="text">
-                    <label class="text-muted">Upload Document</label>
-                </div>
-                <div class="options">
-                    <a href="/upload" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a>
-                </div>
+                
+                
             </div>
         </div>
         <div class="col-sm-7">
@@ -154,9 +148,18 @@ $( document ).ready(function()
         user = result;
 		
 		/* Generate User details */
-		$("#fname").append(user.username);
+		$("#fname").append(user.firstname);
 		$("#surname").append(user.surname);
 		$("#username").append(user.username);
+		
+		/* Restrict document upload to authors */
+		if(user.role != "ROLE_DISTRIBUTEE")
+		{
+			var downloadLabel = '<div class="text"><label class="text-muted">Upload Document</label></div>';
+			var downloadButton = '<div class="options"><a href="/upload" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok-sign"></i> Select</a></div>';
+			
+			$("#uploadBox").append(downloadLabel + downloadButton);
+		}
 		
 		
 		var ownedDocs;		
@@ -202,8 +205,7 @@ $( document ).ready(function()
 			/* Get shares */
 			var shares = [];
 			$.getJSON("/getSharedWith", function(result) 
-			{
-				
+			{				
 				/* Get docs */
 				$.each(result, function(i, item)
 				{
@@ -239,6 +241,14 @@ $( document ).ready(function()
 						var tableRow = "<tr>" + relationship + id + title + author + active + revisions + date + actionButtons + "</tr>";
 						$("#docTable").append(tableRow);
 					 });
+				});
+				
+				$.getJSON("/checkShare", function(result) 
+				{
+					if (result == true)
+					{
+						alert("You have new shares!");
+					}
 				});
 			});
 		});

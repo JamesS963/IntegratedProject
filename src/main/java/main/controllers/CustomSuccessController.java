@@ -61,7 +61,8 @@ public class CustomSuccessController implements AuthenticationSuccessHandler {
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_AUTHOR")) {
+            if (grantedAuthority.getAuthority().equals("ROLE_AUTHOR")
+                || grantedAuthority.getAuthority().equals("ROLE_DISTRIBUTEE")) {
                 isUser = true;
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
