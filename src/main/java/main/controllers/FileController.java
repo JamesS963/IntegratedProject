@@ -33,6 +33,7 @@ public class FileController {
     private final StorageService storageService;
     private final DocumentDao documentDao;
     private final UserDao userDao;
+    private Document docStore;
 
     @Autowired
     public FileController(StorageService storageService, DocumentDao documentDao, UserDao userDao) {
@@ -50,18 +51,6 @@ public class FileController {
     public String uploadForm(Model model) {
         model.addAttribute("document", new Document());
         return "upload";
-    }
-
-    /***
-     * Attaches new file revision to existing Document record
-     * @param model
-     * @param docId
-     * @return
-     */
-    @GetMapping("/uploadRevision/{docId}")
-    public String uploadRevision(Model model, @PathVariable("docId") long docId) {
-        model.addAttribute("document", documentDao.findById(docId));
-        return "uploadRevision";
     }
 
     /***
@@ -101,7 +90,26 @@ public class FileController {
         return "redirect:/uploadLanding";
     }
 
-    @PostMapping("/uploadRevision/uploadRevisionLanding")
+    @GetMapping("/uploadLanding")
+    public String uploadLanding() {
+        return "userDashboard";
+    }
+
+    /***
+     * Attaches new file revision to existing Document record
+     * @param model
+     * @param docId
+     * @return
+     */
+    @GetMapping("/uploadRevision/{docId}")
+    public String uploadRevision(Model model, @PathVariable("docId") long docId) {
+        Document existingDoc = documentDao.findById(docId);
+        model.addAttribute("document", existingDoc);
+        this.docStore = existingDoc;
+        return "uploadRevision";
+    }
+
+    @PostMapping("/uploadRevisionLanding")
     public RedirectView handleRevisionUpload (@RequestParam("file") MultipartFile file,
                                               RedirectAttributes redirectAttributes,
                                               @ModelAttribute Document document) {
@@ -109,21 +117,17 @@ public class FileController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
         User user = userDao.findByUsername(userDetails.getUsername());
-        System.out.println(document);
+        Document existingDoc = this.docStore;
+        System.out.println(existingDoc);
 
-        long revisionNo = document.getRevisionNo() + 1;
-        document.setRevisionNo(revisionNo);
-        document.setActive(false);
+        long revisionNo = existingDoc.getRevisionNo() + 1;
+        existingDoc.setRevisionNo(revisionNo);
+        existingDoc.setActive(false);
          /* Set branch for file */
-        String branch = "/"  +user.getUsername()+ "/" + document.getId() + "/" +document.getRevisionNo()+ "/";
+        String branch = "/"  +user.getUsername()+ "/" + existingDoc.getId() + "/" +existingDoc.getRevisionNo()+ "/";
         storageService.store(file, branch);
-        documentDao.save(document);
+        documentDao.save(existingDoc);
         return new RedirectView("uploadRevisionLanding");
-    }
-
-    @GetMapping("/uploadLanding")
-    public String uploadLanding() {
-        return "userDashboard";
     }
 
     @GetMapping("/uploadRevisionLanding")
@@ -168,12 +172,6 @@ public class FileController {
      */
     @GetMapping("/download")
     public String listUploadedFiles(Model model, @ModelAttribute Document document) throws IOException {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        User user = userDao.findByUsername(userDetails.getUsername());
-        String username = user.getUsername();
-        String docId = Long.toString(document.getId());
-        String revisionNo = Long.toString(document.getRevisionNo());
         model.addAttribute("files", storageService
                 .loadAll()
                 .map(path -> MvcUriComponentsBuilder

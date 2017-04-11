@@ -97,7 +97,6 @@ public class FileSystemStorageService implements StorageService {
 
     public void deleteBranch(String username) {
         Path branchPath = Paths.get(rootLocation.toString(), username);
-        System.out.println("DeleteBranch: " + branchPath);
         FileSystemUtils.deleteRecursively(branchPath.toFile());
     }
 
