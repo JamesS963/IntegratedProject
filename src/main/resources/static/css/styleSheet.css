@@ -16,8 +16,6 @@ header{
     background-color: white;
     margin-top:-20px;
     height:80px;
-
-    
 }
 body{
     background-color:lightgrey;
@@ -71,10 +69,12 @@ h3{
 }
 .container{
     padding:10px;
+    font-family: 'Open Sans', sans-serif;
 }
 .download-head{
     text-align: center;
     font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
            }
 .form-signin
 {
@@ -99,6 +99,7 @@ h3{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 .form-signin .form-control:focus
 {
@@ -131,6 +132,7 @@ h3{
     font-size: 18px;
     font-weight: 400;
     display: block;
+    font-family: 'Open Sans', sans-serif;
 }
 .profile-img
 {
@@ -145,6 +147,7 @@ h3{
 .need-help
 {
     margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
 }
 .new-account
 {
@@ -189,6 +192,7 @@ h3{
 }
 .panel-heading{
     font-size: medium;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .centered-form{
@@ -268,12 +272,14 @@ used to vertically center elements, may need modification if you're not using de
 .panel-table .panel-footer .col{
  line-height: 34px;
  height: 34px;
+ font-family: 'Open Sans', sans-serif;
 }
 
 .panel-table .panel-heading .col h3{
  line-height: 30px;
  height: 30px;
  font-weight: bold;
+ font-family: 'Open Sans', sans-serif;
 }
 
 .panel-table .panel-body .table-bordered > tbody > tr > td{
@@ -283,7 +289,23 @@ used to vertically center elements, may need modification if you're not using de
 {
  margin-right:10px;
 }
+.img-circle{
+padding-bottom:20px;
+}
 
+.links{
+list-style-type:none;
+font-size:25px;
+text-align:center;
+padding-top:25px;
+font-family: 'Open Sans', sans-serif;
+}
+.revisionH1{
+text-align:center;
+font-size:35px;
+text-decoration:underline;
+font-family: 'Open Sans', sans-serif;
+}
 
 
 

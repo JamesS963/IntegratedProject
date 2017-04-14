@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link href="css/styleSheet.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,7 +19,7 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li class="active"><a href="userDashboard.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
@@ -35,20 +36,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-3">
-            <div id="uploadBox" class="hero-widget well well-sm">
-                <div class="icon">
-                    <i class="glyphicon glyphicon-upload"></i>
-                </div>
-                
-                
-            </div>
-        </div>
-        <div class="col-sm-7">
+        <div class="col-sm-7 col-md-12">
             <div class="row">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">User's Name</h3>
+                        <h3 class="panel-title">User Profile</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -74,19 +66,15 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
-                    </div>
+                        <div id="uploadBox" class="hero-widget well well-sm">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </div>
+                        </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="container">
-    <!--<div class="row">-->
-        <div class="col-md-8 col-md-offset-1">
+                        <div class="col-sm-7 col-md-11">
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">
@@ -139,6 +127,10 @@
                 </div>
             </div>
     </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 $( document ).ready(function() 
 {
